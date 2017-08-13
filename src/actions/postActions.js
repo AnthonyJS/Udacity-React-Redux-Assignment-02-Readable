@@ -24,6 +24,22 @@ export function GetPosts() {
     }
 }
 
+export function DeletePost(id) {
+    return dispatch => {
+        axios
+            .get('http://localhost:5001/posts', {
+                headers: { Authorization: 'hello' }
+            })
+            .then(res => res.data)
+            .then(data => {
+                dispatch({
+                    type: DELETE_POST,
+                    payload: id
+                })
+            })
+    }
+}
+
 export function AddPost(post) {
     const params = {
         id: uuid(),

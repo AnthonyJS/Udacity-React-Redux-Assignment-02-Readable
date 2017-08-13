@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Breadcrumb } from 'react-bootstrap'
 import logo from './logo.svg'
 import { connect } from 'react-redux'
-import { GetPosts, AddPost } from './actions/postActions'
+import { GetPosts, AddPost, DeletePost } from './actions/postActions'
 import './App.css'
 
 class App extends Component {
@@ -23,7 +23,12 @@ class App extends Component {
 
     submitHandler = event => {
         event.preventDefault()
-        this.props.submitForm(this.state.post)
+        this.props.submitPost(this.state.post)
+    }
+
+    deleteHandler = (event, id) => {
+        event.preventDefault()
+        this.props.deletePost(id)
     }
 
     render() {
@@ -34,7 +39,13 @@ class App extends Component {
                 <ul>
                     {posts.map(post =>
                         <li>
-                            {post.title}
+                            {post.title}{' '}
+                            <a
+                                onClick={e => this.deleteHandler(e, post.id)}
+                                style={{ cursor: 'pointer' }}
+                            >
+                                X
+                            </a>
                         </li>
                     )}
                 </ul>
@@ -80,7 +91,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     getPosts: () => dispatch(GetPosts()),
-    submitForm: post => dispatch(AddPost(post))
+    submitPost: post => dispatch(AddPost(post)),
+    deletePost: id => dispatch(DeletePost(id))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
