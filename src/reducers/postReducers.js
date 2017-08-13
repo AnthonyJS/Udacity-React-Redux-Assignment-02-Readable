@@ -5,7 +5,7 @@ export default function Reducer(state = { posts: [] }, action) {
         case GET_POSTS:
             return {
                 ...state,
-                posts: state.posts.concat(action.payload)
+                posts: action.payload
             }
 
         case ADD_POST:
