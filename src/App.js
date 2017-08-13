@@ -13,13 +13,14 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <Breadcrumb>
-                    <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
-                    <Breadcrumb.Item href="http://getbootstrap.com/components/#breadcrumbs">
-                        Library
-                    </Breadcrumb.Item>
-                    <Breadcrumb.Item active>Data</Breadcrumb.Item>
-                </Breadcrumb>
+                <ul>
+                    {console.log('this.props', this.props)}
+                    {Object.keys(this.props.posts).map(key =>
+                        <li>
+                            {this.props.posts[key].title}
+                        </li>
+                    )}
+                </ul>
                 <div className="App-header">
                     <img src={logo} className="App-logo" alt="logo" />
                     <h2>Welcome to React</h2>
@@ -34,7 +35,7 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-    blah: state.blah
+    posts: state.posts
 })
 
 const mapDispatchToProps = dispatch => ({

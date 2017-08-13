@@ -4,13 +4,14 @@ export default function Reducer(state = {}, action) {
     console.log('action.payload', action.payload)
     switch (action.type) {
         case GET_POSTS:
-            return {
-                ...state,
-                posts: action.payload.reduce(
+            return Object.assign(
+                {},
+                state,
+                action.payload.reduce(
                     (prev, curr) => ({ ...prev, [curr.id]: curr }),
                     {}
                 )
-            }
+            )
         case ADD_POST:
             return {
                 ...state,
