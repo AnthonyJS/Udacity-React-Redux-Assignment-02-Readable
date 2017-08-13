@@ -1,9 +1,15 @@
 import React, { Component } from 'react'
 import { Breadcrumb } from 'react-bootstrap'
 import logo from './logo.svg'
+import { connect } from 'react-redux'
+import { GetPosts } from './actions/postActions'
 import './App.css'
 
 class App extends Component {
+    componentDidMount() {
+        this.props.getPosts()
+    }
+
     render() {
         return (
             <div className="App">
@@ -27,4 +33,12 @@ class App extends Component {
     }
 }
 
-export default App
+const mapStateToProps = state => ({
+    blah: state.blah
+})
+
+const mapDispatchToProps = dispatch => ({
+    getPosts: () => dispatch(GetPosts())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
