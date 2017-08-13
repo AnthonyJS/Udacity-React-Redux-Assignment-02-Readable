@@ -11,15 +11,16 @@ class App extends Component {
     }
 
     render() {
+        const { posts } = this.props
+
         return (
             <div className="App">
                 <ul>
-                    {this.props.posts &&
-                        this.props.posts.map(item =>
-                            <li>
-                                {item.title}
-                            </li>
-                        )}
+                    {posts.map(post =>
+                        <li>
+                            {post.title}
+                        </li>
+                    )}
                 </ul>
                 <div className="App-header">
                     <img src={logo} className="App-logo" alt="logo" />
@@ -35,7 +36,9 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-    posts: state.content.posts
+    posts: Object.keys(state.content.posts).map(key => ({
+        ...state.content.posts[key]
+    }))
 })
 
 const mapDispatchToProps = dispatch => ({

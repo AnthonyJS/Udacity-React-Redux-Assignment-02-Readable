@@ -1,11 +1,14 @@
 import { GET_POSTS, ADD_POST, EDIT_POST } from '../actions/postActions'
 
-export default function Reducer(state = { posts: [] }, action) {
+export default function Reducer(state = { posts: {} }, action) {
     switch (action.type) {
         case GET_POSTS:
             return {
                 ...state,
-                posts: action.payload
+                posts: action.payload.reduce(
+                    (prev, curr) => ({ ...prev, [curr.id]: curr }),
+                    {}
+                )
             }
 
         case ADD_POST:
