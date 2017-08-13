@@ -1,17 +1,13 @@
 import { GET_POSTS, ADD_POST, EDIT_POST } from '../actions/postActions'
 
-export default function Reducer(state = {}, action) {
-    console.log('action.payload', action.payload)
+export default function Reducer(state = { posts: [] }, action) {
     switch (action.type) {
         case GET_POSTS:
-            return Object.assign(
-                {},
-                state,
-                action.payload.reduce(
-                    (prev, curr) => ({ ...prev, [curr.id]: curr }),
-                    {}
-                )
-            )
+            return {
+                ...state,
+                posts: state.posts.concat(action.payload)
+            }
+
         case ADD_POST:
             return {
                 ...state,

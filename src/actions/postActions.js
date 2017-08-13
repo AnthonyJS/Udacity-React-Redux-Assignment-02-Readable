@@ -15,7 +15,6 @@ export function GetPosts() {
             })
             .then(res => res.data)
             .then(data => {
-                console.log('data', data)
                 dispatch({
                     type: GET_POSTS,
                     payload: data

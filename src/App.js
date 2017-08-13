@@ -14,12 +14,12 @@ class App extends Component {
         return (
             <div className="App">
                 <ul>
-                    {console.log('this.props', this.props)}
-                    {Object.keys(this.props.posts).map(key =>
-                        <li>
-                            {this.props.posts[key].title}
-                        </li>
-                    )}
+                    {this.props.posts &&
+                        this.props.posts.map(item =>
+                            <li>
+                                {item.title}
+                            </li>
+                        )}
                 </ul>
                 <div className="App-header">
                     <img src={logo} className="App-logo" alt="logo" />
@@ -35,7 +35,7 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-    posts: state.posts
+    posts: state.content.posts
 })
 
 const mapDispatchToProps = dispatch => ({
