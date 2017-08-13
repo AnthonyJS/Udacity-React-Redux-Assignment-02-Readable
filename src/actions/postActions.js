@@ -1,4 +1,5 @@
 import axios from 'axios'
+import uuid from 'uuid/v4'
 
 export const GET_POSTS = 'GET_POSTS'
 export const ADD_POST = 'ADD_POST'
@@ -24,10 +25,27 @@ export function GetPosts() {
 }
 
 export function AddPost(post) {
-    // Send data to API
-    return {
-        type: ADD_POST,
-        payload: post
+    const params = {
+        id: uuid(),
+        timestamp: Date.now(),
+        title: post.title,
+        body: post.body,
+        author: post.author,
+        category: post.category
+    }
+    const config = {
+        headers: {
+            authorization: 'hello'
+        }
+    }
+
+    return dispatch => {
+        axios.post('http://localhost:5001/posts', params, config).then(data => {
+            dispatch({
+                type: ADD_POST,
+                payload: params
+            })
+        })
     }
 }
 
