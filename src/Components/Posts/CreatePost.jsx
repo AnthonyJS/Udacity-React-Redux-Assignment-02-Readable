@@ -4,20 +4,32 @@ import { connect } from 'react-redux'
 import { AddPost } from '../../actions/postActions'
 
 class CreatePost extends Component {
-    state = {}
+    post = {
+        title: '',
+        body: '',
+        author: ''
+    }
 
     changeHandler = event => {
-        this.setState({
-            post: {
-                ...this.state.post,
-                [event.target.name]: event.target.value
-            }
-        })
+        switch (event.target.name) {
+            case 'title':
+                this.post.title = event.target.value
+                break
+            case 'body':
+                this.post.body = event.target.value
+                break
+            case 'author':
+                this.post.author = event.target.value
+                break
+            default:
+                break
+        }
     }
 
     submitHandler = event => {
         event.preventDefault()
-        this.props.submitPost(this.state.post)
+
+        this.props.submitPost(this.post)
     }
 
     render() {
