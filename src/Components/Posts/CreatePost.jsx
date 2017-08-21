@@ -1,35 +1,20 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { AddPost } from '../../actions/postActions'
+import { AddPost, UpdateUnsavedPost } from '../../actions/postActions'
 
 class CreatePost extends Component {
-    post = {
-        title: '',
-        body: '',
-        author: ''
-    }
-
     changeHandler = event => {
-        switch (event.target.name) {
-            case 'title':
-                this.post.title = event.target.value
-                break
-            case 'body':
-                this.post.body = event.target.value
-                break
-            case 'author':
-                this.post.author = event.target.value
-                break
-            default:
-                break
-        }
+        const fieldToUpdate = event.target.name
+        const newValue = event.target.value
+
+        this.props.updateUnsavedPost(fieldToUpdate, newValue)
     }
 
     submitHandler = event => {
         event.preventDefault()
 
-        this.props.submitPost(this.post)
+        this.props.addPost(this.props.fieldData)
     }
 
     render() {
@@ -40,18 +25,21 @@ class CreatePost extends Component {
                         type="text"
                         id="title"
                         name="title"
+                        value={this.props.fieldData.title}
                         onChange={this.changeHandler}
                     />
                     <input
                         type="text"
                         id="body"
                         name="body"
+                        value={this.props.fieldData.body}
                         onChange={this.changeHandler}
                     />
                     <input
                         type="text"
                         id="author"
                         name="author"
+                        value={this.props.fieldData.author}
                         onChange={this.changeHandler}
                     />
                     <input type="submit" value="submitty" />
@@ -63,8 +51,14 @@ class CreatePost extends Component {
 
 CreatePost.propTypes = {}
 
-const mapDispatchToProps = dispatch => ({
-    submitPost: post => dispatch(AddPost(post))
+const mapStateToProps = state => ({
+    fieldData: state.content.postDetails
 })
 
-export default connect(null, mapDispatchToProps)(CreatePost)
+const mapDispatchToProps = dispatch => ({
+    addPost: post => dispatch(AddPost(post)),
+    updateUnsavedPost: (fieldToUpdate, change) =>
+        dispatch(UpdateUnsavedPost(fieldToUpdate, change))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreatePost)
