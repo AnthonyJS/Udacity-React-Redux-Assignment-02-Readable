@@ -52,7 +52,7 @@ class CreatePost extends Component {
 CreatePost.propTypes = {}
 
 const mapStateToProps = state => ({
-    fieldData: state.content.postDetails
+    fieldData: state.content.unsavedPost
 })
 
 const mapDispatchToProps = dispatch => ({
