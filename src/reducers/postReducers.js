@@ -49,7 +49,7 @@ export default function Reducer(
                 ...state,
                 unsavedPost: {
                     ...state.unsavedPost,
-                    [action.payload.fieldToUpdate]: action.payload.change
+                    [action.payload.fieldToUpdate]: action.payload.newValue
                 }
             }
         default:

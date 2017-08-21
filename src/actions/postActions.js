@@ -41,12 +41,12 @@ export function DeletePost(id) {
     }
 }
 
-export function UpdateUnsavedPost(fieldToUpdate, change) {
+export function UpdateUnsavedPost(fieldToUpdate, newValue) {
     return {
         type: UPDATE_UNSAVED_POST,
         payload: {
             fieldToUpdate,
-            change
+            newValue
         }
     }
 }

@@ -57,8 +57,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     addPost: post => dispatch(AddPost(post)),
-    updateUnsavedPost: (fieldToUpdate, change) =>
-        dispatch(UpdateUnsavedPost(fieldToUpdate, change))
+    updateUnsavedPost: (fieldToUpdate, newValue) =>
+        dispatch(UpdateUnsavedPost(fieldToUpdate, newValue))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreatePost)
