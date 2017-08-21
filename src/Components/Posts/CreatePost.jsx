@@ -18,6 +18,8 @@ class CreatePost extends Component {
     }
 
     render() {
+        const { title, body, author } = this.props.fieldData
+
         return (
             <div>
                 <form onSubmit={this.submitHandler}>
@@ -25,21 +27,21 @@ class CreatePost extends Component {
                         type="text"
                         id="title"
                         name="title"
-                        value={this.props.fieldData.title}
+                        value={title}
                         onChange={this.changeHandler}
                     />
                     <input
                         type="text"
                         id="body"
                         name="body"
-                        value={this.props.fieldData.body}
+                        value={body}
                         onChange={this.changeHandler}
                     />
                     <input
                         type="text"
                         id="author"
                         name="author"
-                        value={this.props.fieldData.author}
+                        value={author}
                         onChange={this.changeHandler}
                     />
                     <input type="submit" value="submitty" />
