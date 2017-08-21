@@ -16,6 +16,7 @@ export function GetPosts() {
                 headers: { Authorization: 'hello' }
             })
             .then(res => res.data)
+            .then(data => data.filter(item => !item.deleted))
             .then(data => {
                 dispatch({
                     type: GET_POSTS,
@@ -26,11 +27,15 @@ export function GetPosts() {
 }
 
 export function DeletePost(id) {
+    const config = {
+        headers: {
+            authorization: 'hello'
+        }
+    }
+
     return dispatch => {
         axios
-            .get('http://localhost:5001/posts', {
-                headers: { Authorization: 'hello' }
-            })
+            .delete('http://localhost:5001/posts/' + id, config)
             .then(res => res.data)
             .then(data => {
                 dispatch({
