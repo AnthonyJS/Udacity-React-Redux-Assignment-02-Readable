@@ -20,7 +20,7 @@ class PostsList extends Component {
         return (
             <div>
                 <ul>
-                    {posts.map(post =>
+                    {posts.map(post => (
                         <li>
                             {post.title}{' '}
                             <a
@@ -30,7 +30,7 @@ class PostsList extends Component {
                                 XX
                             </a>
                         </li>
-                    )}
+                    ))}
                 </ul>
                 <CreatePost />
             </div>

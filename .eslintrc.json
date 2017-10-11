@@ -1,0 +1,63 @@
+{
+    "extends": ["airbnb", "prettier", "prettier/react"],
+    "plugins": ["react", "prettier"],
+    "env": {
+        "browser": true,
+        "es6": true,
+        "node": true,
+        "jest": true
+    },
+    "settings": {
+        "react": {
+            "createClass": "createReactClass",
+            "pragma": "React",
+            "version": "15.0"
+        },
+        "propWrapperFunctions": ["forbidExtraProps"]
+    },
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true,
+            "sourceType": "module",
+            "allowImportExportEverywhere": false,
+            "codeFrame": false
+        },
+        "sourceType": "module"
+    },
+    "rules": {
+        "no-const-assign": "warn",
+        "no-this-before-super": "warn",
+        "no-undef": "warn",
+        "no-unreachable": "warn",
+        "no-unused-vars": "warn",
+        "constructor-super": "warn",
+        "prettier/prettier": [
+            "error",
+            {
+                "singleQuote": true,
+                "tabWidth": 4,
+                "printWidth": 80,
+                "semi": false,
+                "bracketSpacing": true
+            }
+        ],
+        "valid-typeof": "warn",
+        "react/jsx-uses-react": "error",
+        "react/jsx-uses-vars": "error",
+        "jsx-a11y/href-no-hash": "off",
+        "import/no-unresolved": "off",
+        "linebreak-style": "off",
+        "react/no-did-mount-set-state": "off",
+        "react/forbid-prop-types": "off",
+        "jsx-a11y/media-has-caption": "off",
+        "import/no-extraneous-dependencies": "off",
+        "import/extensions": "off",
+        "no-param-reassign": "warn",
+        "radix": "off",
+        "react/require-default-props": "off",
+        "no-case-declarations": "warn",
+        "no-plusplus": "off",
+        "import/prefer-default-export": "off"
+    }
+}
