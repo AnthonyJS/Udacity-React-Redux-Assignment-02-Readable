@@ -57,6 +57,8 @@ export function UpdateUnsavedPost(fieldToUpdate, newValue) {
 }
 
 export function AddPost(post) {
+    console.log('in here', post)
+
     const params = {
         id: uuid(),
         timestamp: Date.now(),
