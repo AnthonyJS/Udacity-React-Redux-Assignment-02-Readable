@@ -1,11 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import PostForm from './PostForm'
+import PropTypes from 'prop-types'
 import { AddPost } from '../../actions/postActions'
 
-const CreatePost = props => {
+const CreatePost = ({ addPost }) => {
     const handleSubmit = values => {
-        props.addPost(values)
+        addPost(values)
     }
 
     return (
@@ -17,6 +18,10 @@ const CreatePost = props => {
             />
         </div>
     )
+}
+
+CreatePost.propTypes = {
+    addPost: PropTypes.func.isRequired
 }
 
 const mapDispatchToProps = dispatch => ({

@@ -68,11 +68,9 @@ class PostsList extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    posts: Object.keys(state.content.posts).map(key => ({
-        ...state.content.posts[key]
-    })),
-    currentPostId: state.content.currentPostId
+const mapStateToProps = ({ content }) => ({
+    posts: Object.values(content.posts),
+    currentPostId: content.currentPostId
 })
 
 const mapDispatchToProps = dispatch => ({

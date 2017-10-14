@@ -4,9 +4,9 @@ import { connect } from 'react-redux'
 import PostForm from './PostForm'
 import { UpdatePost } from '../../actions/postActions'
 
-const EditPost = props => {
+const EditPost = ({ initialValues, updatePost }) => {
     const handleSubmit = values => {
-        props.updatePost(values)
+        updatePost(values)
     }
 
     return (
@@ -14,7 +14,7 @@ const EditPost = props => {
             Edit{' '}
             <PostForm
                 onSubmit={handleSubmit}
-                initialValues={props.initialValues}
+                initialValues={initialValues}
                 enableReinitialize
             />
         </div>
