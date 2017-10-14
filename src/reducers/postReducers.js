@@ -3,7 +3,9 @@ import {
     ADD_POST,
     EDIT_POST,
     DELETE_POST,
-    CURRENT_POST_ID
+    CURRENT_POST_ID,
+    UP_VOTE_POST,
+    DOWN_VOTE_POST
 } from '../actions/postActions'
 
 export default function Reducer(state = { posts: {} }, action) {
@@ -44,6 +46,23 @@ export default function Reducer(state = { posts: {} }, action) {
             return {
                 ...state,
                 currentPostId: action.payload
+            }
+        case UP_VOTE_POST:
+            const tempPostsa = { ...state.posts }
+
+            tempPostsa[action.payload].voteScore++
+
+            return {
+                ...state,
+                posts: tempPostsa
+            }
+        case DOWN_VOTE_POST:
+            const tempPostsd = { ...state.posts }
+            tempPostsd[action.payload].voteScore--
+
+            return {
+                ...state,
+                posts: tempPostsd
             }
         default:
             return state

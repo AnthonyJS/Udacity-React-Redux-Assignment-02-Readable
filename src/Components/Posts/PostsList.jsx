@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { get } from 'lodash'
 import {
     GetPosts,
     DeletePost,
@@ -12,8 +13,13 @@ import PostRow from './PostRow'
 
 class PostsList extends Component {
     componentDidMount() {
-        this.props.getPosts()
-        this.props.getCategories()
+        const { getPosts, getCategories, match } = this.props
+
+        getCategories()
+
+        this.category = get(match, 'params.category')
+
+        getPosts(this.category)
     }
 
     deleteHandler = (event, id) => {
@@ -26,24 +32,19 @@ class PostsList extends Component {
             posts,
             currentPostId,
             updateCurrentPostId,
-            categories,
-            match
+            categories
         } = this.props
 
         return (
             <div>
-                {<div>Param: {match && match.params.category}</div>}
                 <ul>
-                    {categories &&
-                        categories.map(cat => (
-                            <li key={cat.name}>{cat.name}</li>
-                        ))}
+                    {categories.map(cat => <li key={cat.name}>{cat.name}</li>)}
                 </ul>
                 <ul>
                     {posts.map(post => (
                         <PostRow
                             key={post.id}
-                            post={post}
+                            {...post}
                             updateCurrentPostId={updateCurrentPostId}
                             deleteHandler={this.deleteHandler}
                         />
@@ -52,8 +53,16 @@ class PostsList extends Component {
                 {currentPostId ? (
                     <EditPost postId={currentPostId} />
                 ) : (
-                    <CreatePost postId={currentPostId} />
+                    <div>
+                        {this.category && (
+                            <CreatePost
+                                postId={currentPostId}
+                                category={this.category}
+                            />
+                        )}
+                    </div>
                 )}
+
                 <button
                     onClick={() => {
                         updateCurrentPostId(null)
@@ -73,7 +82,7 @@ const mapStateToProps = ({ content, category }) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    getPosts: () => dispatch(GetPosts()),
+    getPosts: category => dispatch(GetPosts(category)),
     deletePost: id => dispatch(DeletePost(id)),
     updateCurrentPostId: id => dispatch(UpdateCurrentPostId(id)),
     getCategories: () => dispatch(GetCategories())
