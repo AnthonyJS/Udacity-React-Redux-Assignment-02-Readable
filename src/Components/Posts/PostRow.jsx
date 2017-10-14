@@ -19,7 +19,8 @@ const PostRow = ({
     downVotePost
 }) => (
     <li key={id}>
-        <div>id - {id}</div>
+        <a href={`/${category}/${id}`}>{id}</a>
+
         <div>timestamp - {timestamp}</div>
         <div>title - {title}</div>
         <div>body - {body}</div>
