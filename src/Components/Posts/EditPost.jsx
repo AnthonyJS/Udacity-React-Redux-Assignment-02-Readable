@@ -9,8 +9,6 @@ const EditPost = props => {
         props.updatePost(values)
     }
 
-    console.log('props.initialValues', props.initialValues)
-
     return (
         <div>
             Edit{' '}
@@ -24,7 +22,7 @@ const EditPost = props => {
 }
 
 EditPost.propTypes = {
-    postId: PropTypes.number.isRequired
+    postId: PropTypes.string.isRequired
 }
 
 const mapStateToProps = (state, ownProps) => ({

@@ -7,7 +7,6 @@ export const EDIT_POST = 'EDIT_POST'
 export const DELETE_POST = 'DELETE_POST'
 export const UPVOTE_POST = 'UPVOTE_POST'
 export const DOWNVOTE_POST = 'UPVOTE_POST'
-export const UPDATE_UNSAVED_POST = 'UPDATE_UNSAVED_POST'
 
 export function GetPosts() {
     return dispatch => {
@@ -43,16 +42,6 @@ export function DeletePost(id) {
                     payload: id
                 })
             })
-    }
-}
-
-export function UpdateUnsavedPost(fieldToUpdate, newValue) {
-    return {
-        type: UPDATE_UNSAVED_POST,
-        payload: {
-            fieldToUpdate,
-            newValue
-        }
     }
 }
 

@@ -8,9 +8,15 @@ const CreatePost = props => {
         props.addPost(values)
     }
 
+    console.log('in the create post')
+
     return (
         <div>
-            Create<PostForm onSubmit={handleSubmit} enableReinitialize />
+            Create<PostForm
+                onSubmit={handleSubmit}
+                initialValues={{}}
+                enableReinitialize
+            />
         </div>
     )
 }

@@ -2,14 +2,10 @@ import {
     GET_POSTS,
     ADD_POST,
     EDIT_POST,
-    DELETE_POST,
-    UPDATE_UNSAVED_POST
+    DELETE_POST
 } from '../actions/postActions'
 
-export default function Reducer(
-    state = { posts: {}, unsavedPost: { title: '', author: '', body: '' } },
-    action
-) {
+export default function Reducer(state = { posts: {} }, action) {
     switch (action.type) {
         case GET_POSTS:
             return {
@@ -26,8 +22,7 @@ export default function Reducer(
                 posts: {
                     ...state.posts,
                     [action.payload.id]: action.payload
-                },
-                unsavedPost: { title: '', author: '', body: '' }
+                }
             }
         case DELETE_POST:
             let tempPosts = { ...state.posts }
@@ -42,14 +37,6 @@ export default function Reducer(
                 posts: {
                     ...state.posts,
                     [action.payload.id]: action.payload
-                }
-            }
-        case UPDATE_UNSAVED_POST:
-            return {
-                ...state,
-                unsavedPost: {
-                    ...state.unsavedPost,
-                    [action.payload.fieldToUpdate]: action.payload.newValue
                 }
             }
         default:

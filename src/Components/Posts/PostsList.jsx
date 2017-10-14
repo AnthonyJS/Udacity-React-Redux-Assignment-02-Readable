@@ -23,7 +23,7 @@ class PostsList extends Component {
             <div>
                 <ul>
                     {posts.map(post => (
-                        <li>
+                        <li key={post.id}>
                             {post.title} {post.body} {post.author}{' '}
                             <button
                                 value="edit"
@@ -42,7 +42,9 @@ class PostsList extends Component {
                         </li>
                     ))}
                 </ul>
-                {!this.state.editPostId && <CreatePost />}
+                {/* {!this.state.editPostId && (
+                    <CreatePost postId={this.state.editPostId} />
+                )} */}
                 {this.state.editPostId && (
                     <EditPost postId={this.state.editPostId} />
                 )}
