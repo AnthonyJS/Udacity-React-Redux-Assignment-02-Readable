@@ -1,18 +1,22 @@
 import axios from 'axios'
-import { config } from './header'
-
-const ROOT_URL = 'http://localhost:5001/posts/'
+import { Header, ROOT_URL } from './header'
 
 export const getPosts = () =>
     axios
-        .get(ROOT_URL, config)
+        .get(`${ROOT_URL}/posts`, Header)
         .then(res => res.data)
         .then(data => data.filter(item => !item.deleted))
 
-export const addPost = params => axios.post(ROOT_URL, params, config)
+export const getPostsByCategory = category =>
+    axios
+        .get(`${ROOT_URL}/${category}/posts`, Header)
+        .then(res => res.data)
+        .then(data => data.filter(item => !item.deleted))
+
+export const addPost = params => axios.post(`${ROOT_URL}/posts`, params, Header)
 
 export const deletePost = id =>
-    axios.delete(`${ROOT_URL}${id}`, config).then(res => res.data)
+    axios.delete(`${ROOT_URL}/posts/${id}`, Header).then(res => res.data)
 
 export const updatePost = params =>
-    axios.put(`${ROOT_URL}${params.id}`, params, config)
+    axios.put(`${ROOT_URL}/posts/${params.id}`, params, Header)

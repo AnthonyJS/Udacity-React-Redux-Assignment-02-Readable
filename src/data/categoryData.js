@@ -1,7 +1,5 @@
 import axios from 'axios'
-import { config } from './header'
-
-const ROOT_URL = 'http://localhost:5001/categories/'
+import { Header, ROOT_URL } from './header'
 
 export const getCategories = () =>
-    axios.get(ROOT_URL, config).then(res => res.data)
+    axios.get(`${ROOT_URL}/categories`, Header).then(res => res.data)

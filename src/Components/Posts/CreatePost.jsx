@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import PostForm from './PostForm'
 import PropTypes from 'prop-types'
+import PostForm from './PostForm'
 import { AddPost } from '../../actions/postActions'
 
 const CreatePost = ({ addPost }) => {

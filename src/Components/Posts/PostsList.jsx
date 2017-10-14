@@ -30,7 +30,6 @@ class PostsList extends Component {
 
         return (
             <div>
-                {console.log('categories', categories)}
                 <ul>
                     {categories &&
                         categories.map(cat => (

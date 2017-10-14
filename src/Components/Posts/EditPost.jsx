@@ -22,7 +22,8 @@ const EditPost = ({ initialValues, updatePost }) => {
 }
 
 EditPost.propTypes = {
-    postId: PropTypes.string.isRequired
+    initialValues: PropTypes.func.isRequired,
+    updatePost: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state, ownProps) => ({

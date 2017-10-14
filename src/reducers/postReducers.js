@@ -26,7 +26,7 @@ export default function Reducer(state = { posts: {} }, action) {
                 }
             }
         case DELETE_POST:
-            let tempPosts = { ...state.posts }
+            const tempPosts = { ...state.posts }
             delete tempPosts[action.payload]
             return {
                 ...state,
