@@ -26,7 +26,15 @@ class PostsList extends Component {
                 <ul>
                     {posts.map(post => (
                         <li key={post.id}>
-                            {post.title} {post.body} {post.author}{' '}
+                            <div>id - {post.id}</div>
+                            <div>timestamp - {post.timestamp}</div>
+                            <div>title - {post.title}</div>
+                            <div>body - {post.body}</div>
+                            <div>author - {post.author}</div>
+                            <div>category - {post.category}</div>
+                            <div>voteScore - {post.voteScore}</div>
+                            <div>deleted - {post.deleted}</div>
+
                             <button
                                 value="edit"
                                 onClick={() => {
@@ -35,12 +43,11 @@ class PostsList extends Component {
                             >
                                 Edit
                             </button>
-                            <a
+                            <button
                                 onClick={e => this.deleteHandler(e, post.id)}
-                                style={{ cursor: 'pointer' }}
                             >
-                                XX
-                            </a>
+                                Delete
+                            </button>
                         </li>
                     ))}
                 </ul>
