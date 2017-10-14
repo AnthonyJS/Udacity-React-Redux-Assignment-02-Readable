@@ -1,5 +1,4 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React from 'react'
 import { connect } from 'react-redux'
 import PostForm from './PostForm'
 import { AddPost } from '../../actions/postActions'
@@ -9,10 +8,12 @@ const CreatePost = props => {
         props.addPost(values)
     }
 
-    return <PostForm onSubmit={handleSubmit} />
+    return (
+        <div>
+            Create<PostForm onSubmit={handleSubmit} enableReinitialize />
+        </div>
+    )
 }
-
-CreatePost.propTypes = {}
 
 const mapDispatchToProps = dispatch => ({
     addPost: post => dispatch(AddPost(post))

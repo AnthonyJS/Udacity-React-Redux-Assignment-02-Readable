@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { GetPosts, DeletePost } from '../../actions/postActions'
 import CreatePost from './CreatePost'
+import EditPost from './EditPost'
 
 class PostsList extends Component {
+    state = { editPostId: '' }
+
     componentDidMount() {
         this.props.getPosts()
     }
@@ -22,7 +24,15 @@ class PostsList extends Component {
                 <ul>
                     {posts.map(post => (
                         <li>
-                            {post.title}{' '}
+                            {post.title} {post.body} {post.author}{' '}
+                            <button
+                                value="edit"
+                                onClick={() => {
+                                    this.setState({ editPostId: post.id })
+                                }}
+                            >
+                                Edit
+                            </button>
                             <a
                                 onClick={e => this.deleteHandler(e, post.id)}
                                 style={{ cursor: 'pointer' }}
@@ -32,13 +42,21 @@ class PostsList extends Component {
                         </li>
                     ))}
                 </ul>
-                <CreatePost />
+                {!this.state.editPostId && <CreatePost />}
+                {this.state.editPostId && (
+                    <EditPost postId={this.state.editPostId} />
+                )}
+                <button
+                    onClick={() => {
+                        this.setState({ editPostId: null })
+                    }}
+                >
+                    Cancel edit
+                </button>
             </div>
         )
     }
 }
-
-PostsList.propTypes = {}
 
 const mapStateToProps = state => ({
     posts: Object.keys(state.content.posts).map(key => ({

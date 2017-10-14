@@ -83,7 +83,7 @@ export function AddPost(post) {
     }
 }
 
-export function EditPost(post) {
+export function UpdatePost(post) {
     // Send data to API
     return {
         type: EDIT_POST,

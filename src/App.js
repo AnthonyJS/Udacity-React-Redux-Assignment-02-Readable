@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
 import PostsList from './Components/Posts/PostsList'
-import ReduxFormContainer from './Components/ReduxFormContainer'
-import { connect } from 'react-redux'
-import { AddPost } from './actions/postActions'
 
 import './App.css'
 
