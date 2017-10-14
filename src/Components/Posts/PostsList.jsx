@@ -40,7 +40,16 @@ class PostsList extends Component {
             <div>
                 <Link to="/">Link to all</Link>
                 <ul>
-                    {categories.map(cat => <li key={cat.name}>{cat.name}</li>)}
+                    {categories.map(cat => (
+                        <li key={cat.name}>
+                            <Link
+                                to={`/${cat.name}`}
+                                onClick={() => this.props.getPosts(cat.name)}
+                            >
+                                {cat.name}
+                            </Link>
+                        </li>
+                    ))}
                 </ul>
                 <ul>
                     {posts.map(post => (
