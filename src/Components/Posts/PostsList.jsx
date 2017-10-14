@@ -8,6 +8,7 @@ import {
 import { GetCategories } from '../../actions/categoryActions'
 import CreatePost from './CreatePost'
 import EditPost from './EditPost'
+import PostRow from './PostRow'
 
 class PostsList extends Component {
     componentDidMount() {
@@ -40,30 +41,12 @@ class PostsList extends Component {
                 </ul>
                 <ul>
                     {posts.map(post => (
-                        <li key={post.id}>
-                            <div>id - {post.id}</div>
-                            <div>timestamp - {post.timestamp}</div>
-                            <div>title - {post.title}</div>
-                            <div>body - {post.body}</div>
-                            <div>author - {post.author}</div>
-                            <div>category - {post.category}</div>
-                            <div>voteScore - {post.voteScore}</div>
-                            <div>deleted - {post.deleted}</div>
-
-                            <button
-                                value="edit"
-                                onClick={() => {
-                                    updateCurrentPostId(post.id)
-                                }}
-                            >
-                                Edit
-                            </button>
-                            <button
-                                onClick={e => this.deleteHandler(e, post.id)}
-                            >
-                                Delete
-                            </button>
-                        </li>
+                        <PostRow
+                            key={post.id}
+                            post={post}
+                            updateCurrentPostId={updateCurrentPostId}
+                            deleteHandler={this.deleteHandler}
+                        />
                     ))}
                 </ul>
                 {currentPostId ? (

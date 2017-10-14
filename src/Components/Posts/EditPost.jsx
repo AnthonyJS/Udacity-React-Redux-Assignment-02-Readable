@@ -22,7 +22,7 @@ const EditPost = ({ initialValues, updatePost }) => {
 }
 
 EditPost.propTypes = {
-    initialValues: PropTypes.func.isRequired,
+    initialValues: PropTypes.object.isRequired,
     updatePost: PropTypes.func.isRequired
 }
 
