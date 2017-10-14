@@ -7,6 +7,7 @@ export const EDIT_POST = 'EDIT_POST'
 export const DELETE_POST = 'DELETE_POST'
 export const UPVOTE_POST = 'UPVOTE_POST'
 export const DOWNVOTE_POST = 'UPVOTE_POST'
+export const CURRENT_POST_ID = 'CURRENT_POST_ID'
 
 export const GetPosts = () => dispatch =>
     getPosts().then(data => {
@@ -24,14 +25,20 @@ export const DeletePost = id => dispatch =>
         })
     })
 
+export const UpdateCurrentPostId = id => dispatch =>
+    dispatch({
+        type: CURRENT_POST_ID,
+        payload: id
+    })
+
 export const AddPost = ({ title, body, author, category }) => {
     const params = {
         id: uuid(),
         timestamp: Date.now(),
-        title: title,
-        body: body,
-        author: author,
-        category: category
+        title,
+        body,
+        author,
+        category
     }
 
     return dispatch =>

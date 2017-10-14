@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { GetPosts, DeletePost } from '../../actions/postActions'
+import {
+    GetPosts,
+    DeletePost,
+    UpdateCurrentPostId
+} from '../../actions/postActions'
 import CreatePost from './CreatePost'
 import EditPost from './EditPost'
 
 class PostsList extends Component {
-    state = { editPostId: '' }
-
     componentDidMount() {
         this.props.getPosts()
     }
@@ -17,7 +19,7 @@ class PostsList extends Component {
     }
 
     render() {
-        const { posts } = this.props
+        const { posts, currentPostId, updateCurrentPostId } = this.props
 
         return (
             <div>
@@ -28,7 +30,7 @@ class PostsList extends Component {
                             <button
                                 value="edit"
                                 onClick={() => {
-                                    this.setState({ editPostId: post.id })
+                                    updateCurrentPostId(post.id)
                                 }}
                             >
                                 Edit
@@ -42,14 +44,14 @@ class PostsList extends Component {
                         </li>
                     ))}
                 </ul>
-                {this.state.editPostId ? (
-                    <EditPost postId={this.state.editPostId} />
+                {currentPostId ? (
+                    <EditPost postId={currentPostId} />
                 ) : (
-                    <CreatePost postId={this.state.editPostId} />
+                    <CreatePost postId={currentPostId} />
                 )}
                 <button
                     onClick={() => {
-                        this.setState({ editPostId: null })
+                        updateCurrentPostId(null)
                     }}
                 >
                     Cancel edit
@@ -62,12 +64,14 @@ class PostsList extends Component {
 const mapStateToProps = state => ({
     posts: Object.keys(state.content.posts).map(key => ({
         ...state.content.posts[key]
-    }))
+    })),
+    currentPostId: state.content.currentPostId
 })
 
 const mapDispatchToProps = dispatch => ({
     getPosts: () => dispatch(GetPosts()),
-    deletePost: id => dispatch(DeletePost(id))
+    deletePost: id => dispatch(DeletePost(id)),
+    updateCurrentPostId: id => dispatch(UpdateCurrentPostId(id))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostsList)
