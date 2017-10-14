@@ -6,7 +6,8 @@ import Vote from '../Shared/Vote'
 import {
     UpVotePost,
     DownVotePost,
-    GetPostById
+    GetPostById,
+    UpdateCurrentPostId
 } from '../../actions/postActions'
 
 const PostDetail = ({
@@ -22,51 +23,53 @@ const PostDetail = ({
     upVotePost,
     downVotePost,
     match,
-    getPostById
+    getPostById,
+    updateCurrentPostId
 }) => {
-    console.log('aaaaa')
-
-    // if (!title) {
-    const idFromUrl = get(match, 'params.post_id')
-    getPostById(idFromUrl)
-
-    //  }
-
-    console.log('hererherere')
+    if (!title) {
+        const idFromUrl = get(match, 'params.post_id')
+        updateCurrentPostId(idFromUrl)
+        getPostById(idFromUrl)
+    }
 
     return (
         <div>
-            <div>id - {id}</div>
-            <div>timestamp - {timestamp}</div>
-            <div>title - {title}</div>
-            <div>body - {body}</div>
-            <div>author - {author}</div>
-            <div>category - {category}</div>
-            <div>deleted - {deleted}</div>
-
-            <button onClick={e => deleteHandler(e, id)}>Delete</button>
-            <Vote
-                voteScore={voteScore}
-                handleUpVote={() => upVotePost(id)}
-                handleDownVote={() => downVotePost(id)}
-            />
+            {title && (
+                <div>
+                    <div>id - {id}</div>
+                    <div>timestamp - {timestamp}</div>
+                    <div>title - {title}</div>
+                    <div>body - {body}</div>
+                    <div>author - {author}</div>
+                    <div>category - {category}</div>
+                    <div>deleted - {deleted}</div>
+                    <button onClick={e => deleteHandler(e, id)}>Delete</button>
+                    <Vote
+                        voteScore={voteScore}
+                        handleUpVote={() => upVotePost(id)}
+                        handleDownVote={() => downVotePost(id)}
+                    />
+                </div>
+            )}
         </div>
     )
 }
 
 PostDetail.propTypes = {
-    id: PropTypes.string.isRequired,
-    timestamp: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    body: PropTypes.string.isRequired,
-    author: PropTypes.string.isRequired,
-    category: PropTypes.string.isRequired,
+    id: PropTypes.string,
+    timestamp: PropTypes.number,
+    title: PropTypes.string,
+    body: PropTypes.string,
+    author: PropTypes.string,
+    category: PropTypes.string,
     deleted: PropTypes.bool,
-    voteScore: PropTypes.number.isRequired,
-    deleteHandler: PropTypes.func.isRequired,
-    upVotePost: PropTypes.func.isRequired,
-    downVotePost: PropTypes.func.isRequired,
-    getPostById: PropTypes.func.isRequired
+    voteScore: PropTypes.number,
+    deleteHandler: PropTypes.func,
+    upVotePost: PropTypes.func,
+    downVotePost: PropTypes.func,
+    getPostById: PropTypes.func.isRequired,
+    updateCurrentPostId: PropTypes.func.isRequired,
+    match: PropTypes.object
 }
 
 const mapStateToProps = ({ content }) => ({
@@ -76,7 +79,8 @@ const mapStateToProps = ({ content }) => ({
 const mapDispatchToProps = dispatch => ({
     upVotePost: id => dispatch(UpVotePost(id)),
     downVotePost: id => dispatch(DownVotePost(id)),
-    getPostById: id => dispatch(GetPostById(id))
+    getPostById: id => dispatch(GetPostById(id)),
+    updateCurrentPostId: id => dispatch(UpdateCurrentPostId(id))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostDetail)

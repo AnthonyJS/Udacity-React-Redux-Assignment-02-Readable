@@ -21,8 +21,6 @@ export default function Reducer(state = { posts: {} }, action) {
             }
 
         case GET_POST_BY_ID:
-            console.log('gfgfdg')
-
             return {
                 ...state,
                 posts: {
