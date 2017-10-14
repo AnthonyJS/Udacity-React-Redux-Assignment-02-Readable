@@ -5,6 +5,7 @@ import { get } from 'lodash'
 import { Link } from 'react-router-dom'
 import dateFormat from 'dateformat'
 import PostVote from './PostVote'
+import PostModifyControls from './PostModifyControls'
 import EditPost from './EditPost'
 
 import { GetPostById, UpdateCurrentPostId } from '../../actions/postActions'
@@ -16,7 +17,6 @@ const PostDetail = ({
     body,
     author,
     category,
-    deleteHandler,
     match,
     getPostById,
     updateCurrentPostId
@@ -45,15 +45,7 @@ const PostDetail = ({
                     <div>author - {author}</div>
                     <div>category - {category}</div>
 
-                    <button
-                        value="edit"
-                        onClick={() => {
-                            updateCurrentPostId(id)
-                        }}
-                    >
-                        Edit
-                    </button>
-                    <button onClick={e => deleteHandler(e, id)}>Delete</button>
+                    <PostModifyControls id={id} />
                     <PostVote id={id} />
                 </div>
             )}
@@ -69,7 +61,6 @@ PostDetail.propTypes = {
     body: PropTypes.string,
     author: PropTypes.string,
     category: PropTypes.string,
-    deleteHandler: PropTypes.func,
     getPostById: PropTypes.func.isRequired,
     updateCurrentPostId: PropTypes.func.isRequired,
     match: PropTypes.object
