@@ -51,7 +51,7 @@ PostRow.propTypes = {
     body: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
     category: PropTypes.string.isRequired,
-    deleted: PropTypes.bool.isRequired,
+    deleted: PropTypes.bool,
     voteScore: PropTypes.number.isRequired,
     updateCurrentPostId: PropTypes.func.isRequired,
     deleteHandler: PropTypes.func.isRequired,

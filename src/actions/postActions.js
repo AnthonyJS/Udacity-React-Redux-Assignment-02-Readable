@@ -44,11 +44,13 @@ export const AddPost = ({ title, body, author, category }) => {
         title,
         body,
         author,
-        category
+        category,
+        isDeleted: false,
+        voteScore: 1
     }
 
     return dispatch =>
-        addPost(post).then(data => {
+        addPost(post).then(() => {
             dispatch({
                 type: ADD_POST,
                 payload: post
