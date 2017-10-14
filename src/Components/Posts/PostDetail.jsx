@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { get } from 'lodash'
+import { Link } from 'react-router-dom'
 import Vote from '../Shared/Vote'
 import {
     UpVotePost,
@@ -34,6 +35,7 @@ const PostDetail = ({
 
     return (
         <div>
+            <Link to={`/${category}`}>Link back to {category} category</Link>
             {title && (
                 <div>
                     <div>id - {id}</div>

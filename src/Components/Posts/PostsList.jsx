@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { get } from 'lodash'
+import { Link } from 'react-router-dom'
 import {
     GetPosts,
     DeletePost,
@@ -37,6 +38,7 @@ class PostsList extends Component {
 
         return (
             <div>
+                <Link to="/">Link to all</Link>
                 <ul>
                     {categories.map(cat => <li key={cat.name}>{cat.name}</li>)}
                 </ul>
