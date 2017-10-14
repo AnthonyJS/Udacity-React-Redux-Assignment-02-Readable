@@ -23,8 +23,7 @@ class PostsList extends Component {
         getPosts(this.category)
     }
 
-    deleteHandler = (event, id) => {
-        event.preventDefault()
+    deleteHandler = id => {
         this.props.deletePost(id)
     }
 

@@ -38,7 +38,7 @@ const PostRow = ({
         >
             Edit
         </button>
-        <button onClick={e => deleteHandler(e, id)}>Delete</button>
+        <button onClick={() => deleteHandler(id)}>Delete</button>
         <PostVote id={id} />
     </li>
 )
