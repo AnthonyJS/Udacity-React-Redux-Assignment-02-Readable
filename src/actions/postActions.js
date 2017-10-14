@@ -1,5 +1,5 @@
 import uuid from 'uuid/v4'
-import { getPosts, deletePost, addPost } from '../data/postData'
+import { getPosts, deletePost, addPost, updatePost } from '../data/postData'
 
 export const GET_POSTS = 'GET_POSTS'
 export const ADD_POST = 'ADD_POST'
@@ -32,7 +32,7 @@ export const UpdateCurrentPostId = id => dispatch =>
     })
 
 export const AddPost = ({ title, body, author, category }) => {
-    const params = {
+    const post = {
         id: uuid(),
         timestamp: Date.now(),
         title,
@@ -42,18 +42,18 @@ export const AddPost = ({ title, body, author, category }) => {
     }
 
     return dispatch =>
-        addPost(params).then(data => {
+        addPost(post).then(data => {
             dispatch({
                 type: ADD_POST,
-                payload: params
+                payload: post
             })
         })
 }
 
-export const UpdatePost = post => {
-    // TODO: Send data to API
-    return {
-        type: EDIT_POST,
-        payload: post
-    }
-}
+export const UpdatePost = post => dispatch =>
+    updatePost(post).then(data => {
+        dispatch({
+            type: EDIT_POST,
+            payload: post
+        })
+    })
