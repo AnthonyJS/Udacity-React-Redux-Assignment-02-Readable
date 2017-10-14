@@ -3,7 +3,10 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { get } from 'lodash'
 import { Link } from 'react-router-dom'
+import dateFormat from 'dateformat'
 import Vote from '../Shared/Vote'
+import EditPost from './EditPost'
+
 import {
     UpVotePost,
     DownVotePost,
@@ -39,12 +42,26 @@ const PostDetail = ({
             {title && (
                 <div>
                     <div>id - {id}</div>
-                    <div>timestamp - {timestamp}</div>
+                    <div>
+                        timestamp -{' '}
+                        {dateFormat(
+                            timestamp,
+                            'dddd, mmmm dS, yyyy, h:MM:ss TT'
+                        )}
+                    </div>
                     <div>title - {title}</div>
                     <div>body - {body}</div>
                     <div>author - {author}</div>
                     <div>category - {category}</div>
-                    <div>deleted - {deleted}</div>
+
+                    <button
+                        value="edit"
+                        onClick={() => {
+                            updateCurrentPostId(id)
+                        }}
+                    >
+                        Edit
+                    </button>
                     <button onClick={e => deleteHandler(e, id)}>Delete</button>
                     <Vote
                         voteScore={voteScore}
@@ -53,6 +70,7 @@ const PostDetail = ({
                     />
                 </div>
             )}
+            <EditPost postId={id} />
         </div>
     )
 }

@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import dateFormat from 'dateformat'
 import Vote from '../Shared/Vote'
 import {
     UpVotePost,
@@ -28,12 +29,14 @@ const PostRow = ({
             {id}
         </Link>
 
-        <div>timestamp - {timestamp}</div>
+        <div>
+            timestamp -{' '}
+            {dateFormat(timestamp, 'dddd, mmmm dS, yyyy, h:MM:ss TT')}
+        </div>
         <div>title - {title}</div>
         <div>body - {body}</div>
         <div>author - {author}</div>
         <div>category - {category}</div>
-        <div>deleted - {deleted}</div>
 
         <button
             value="edit"
