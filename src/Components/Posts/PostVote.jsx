@@ -20,9 +20,13 @@ PostVote.propTypes = {
     downVotePost: PropTypes.func
 }
 
+const mapStateToProps = ({ content }, ownProps) => ({
+    voteScore: content.posts[ownProps.id].voteScore
+})
+
 const mapDispatchToProps = dispatch => ({
     upVotePost: id => dispatch(UpVotePost(id)),
     downVotePost: id => dispatch(DownVotePost(id))
 })
 
-export default connect(null, mapDispatchToProps)(PostVote)
+export default connect(mapStateToProps, mapDispatchToProps)(PostVote)

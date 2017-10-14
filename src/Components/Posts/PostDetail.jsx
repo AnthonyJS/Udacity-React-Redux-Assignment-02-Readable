@@ -16,7 +16,6 @@ const PostDetail = ({
     body,
     author,
     category,
-    voteScore,
     deleteHandler,
     match,
     getPostById,
@@ -55,7 +54,7 @@ const PostDetail = ({
                         Edit
                     </button>
                     <button onClick={e => deleteHandler(e, id)}>Delete</button>
-                    <PostVote voteScore={voteScore} id={id} />
+                    <PostVote id={id} />
                 </div>
             )}
             <EditPost postId={id} />
@@ -70,7 +69,6 @@ PostDetail.propTypes = {
     body: PropTypes.string,
     author: PropTypes.string,
     category: PropTypes.string,
-    voteScore: PropTypes.number,
     deleteHandler: PropTypes.func,
     getPostById: PropTypes.func.isRequired,
     updateCurrentPostId: PropTypes.func.isRequired,
