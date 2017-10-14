@@ -5,12 +5,14 @@ import {
     DeletePost,
     UpdateCurrentPostId
 } from '../../actions/postActions'
+import { GetCategories } from '../../actions/categoryActions'
 import CreatePost from './CreatePost'
 import EditPost from './EditPost'
 
 class PostsList extends Component {
     componentDidMount() {
         this.props.getPosts()
+        this.props.getCategories()
     }
 
     deleteHandler = (event, id) => {
@@ -19,10 +21,22 @@ class PostsList extends Component {
     }
 
     render() {
-        const { posts, currentPostId, updateCurrentPostId } = this.props
+        const {
+            posts,
+            currentPostId,
+            updateCurrentPostId,
+            categories
+        } = this.props
 
         return (
             <div>
+                {console.log('categories', categories)}
+                <ul>
+                    {categories &&
+                        categories.map(cat => (
+                            <li key={cat.name}>{cat.name}</li>
+                        ))}
+                </ul>
                 <ul>
                     {posts.map(post => (
                         <li key={post.id}>
@@ -68,15 +82,17 @@ class PostsList extends Component {
     }
 }
 
-const mapStateToProps = ({ content }) => ({
+const mapStateToProps = ({ content, category }) => ({
     posts: Object.values(content.posts),
-    currentPostId: content.currentPostId
+    currentPostId: content.currentPostId,
+    categories: category.categories
 })
 
 const mapDispatchToProps = dispatch => ({
     getPosts: () => dispatch(GetPosts()),
     deletePost: id => dispatch(DeletePost(id)),
-    updateCurrentPostId: id => dispatch(UpdateCurrentPostId(id))
+    updateCurrentPostId: id => dispatch(UpdateCurrentPostId(id)),
+    getCategories: () => dispatch(GetCategories())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostsList)
