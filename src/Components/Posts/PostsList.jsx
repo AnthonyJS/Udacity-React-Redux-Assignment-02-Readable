@@ -42,11 +42,10 @@ class PostsList extends Component {
                         </li>
                     ))}
                 </ul>
-                {/* {!this.state.editPostId && (
-                    <CreatePost postId={this.state.editPostId} />
-                )} */}
-                {this.state.editPostId && (
+                {this.state.editPostId ? (
                     <EditPost postId={this.state.editPostId} />
+                ) : (
+                    <CreatePost postId={this.state.editPostId} />
                 )}
                 <button
                     onClick={() => {

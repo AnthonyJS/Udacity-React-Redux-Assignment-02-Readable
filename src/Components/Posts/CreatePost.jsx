@@ -8,8 +8,6 @@ const CreatePost = props => {
         props.addPost(values)
     }
 
-    console.log('in the create post')
-
     return (
         <div>
             Create<PostForm
