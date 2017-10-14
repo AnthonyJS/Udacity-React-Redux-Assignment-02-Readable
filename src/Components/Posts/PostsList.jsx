@@ -25,11 +25,13 @@ class PostsList extends Component {
             posts,
             currentPostId,
             updateCurrentPostId,
-            categories
+            categories,
+            match
         } = this.props
 
         return (
             <div>
+                {<div>Param: {match && match.params.category}</div>}
                 <ul>
                     {categories &&
                         categories.map(cat => (

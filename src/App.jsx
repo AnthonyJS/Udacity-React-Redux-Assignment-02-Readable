@@ -7,7 +7,7 @@ import './App.css'
 const App = () => (
     <div className="App">
         <Route path="/" exact render={() => <PostsList />} />
-        <Route path="/search/" render={() => <PostsList />} />
+        <Route path="/:category" component={PostsList} />
     </div>
 )
 
