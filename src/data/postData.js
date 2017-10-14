@@ -16,6 +16,9 @@ export const getPosts = category => {
         .then(data => data.filter(item => !item.deleted))
 }
 
+export const getPostById = id =>
+    axios.get(`${ROOT_URL}/posts/${id}`, Header).then(res => res.data)
+
 export const addPost = params => axios.post(`${ROOT_URL}/posts`, params, Header)
 
 export const deletePost = id =>

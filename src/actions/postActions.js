@@ -1,6 +1,7 @@
 import uuid from 'uuid/v4'
 import {
     getPosts,
+    getPostById,
     deletePost,
     addPost,
     updatePost,
@@ -14,11 +15,20 @@ export const DELETE_POST = 'DELETE_POST'
 export const UP_VOTE_POST = 'UP_VOTE_POST'
 export const DOWN_VOTE_POST = 'DOWN_VOTE_POST'
 export const CURRENT_POST_ID = 'CURRENT_POST_ID'
+export const GET_POST_BY_ID = 'GET_POST_BY_ID'
 
 export const GetPosts = category => dispatch =>
     getPosts(category).then(data => {
         dispatch({
             type: GET_POSTS,
+            payload: data
+        })
+    })
+
+export const GetPostById = id => dispatch =>
+    getPostById(id).then(data => {
+        dispatch({
+            type: GET_POST_BY_ID,
             payload: data
         })
     })

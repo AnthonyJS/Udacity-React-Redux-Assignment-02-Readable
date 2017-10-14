@@ -1,5 +1,6 @@
 import {
     GET_POSTS,
+    GET_POST_BY_ID,
     ADD_POST,
     EDIT_POST,
     DELETE_POST,
@@ -17,6 +18,17 @@ export default function Reducer(state = { posts: {} }, action) {
                     (prev, curr) => ({ ...prev, [curr.id]: curr }),
                     {}
                 )
+            }
+
+        case GET_POST_BY_ID:
+            console.log('gfgfdg')
+
+            return {
+                ...state,
+                posts: {
+                    ...state.posts,
+                    [action.payload.id]: action.payload
+                }
             }
 
         case ADD_POST:

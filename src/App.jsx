@@ -9,7 +9,7 @@ const App = () => (
     <div className="App">
         <Route path="/" exact render={() => <PostsList />} />
         <Route path="/:category" exact component={PostsList} />
-        <Route path="/:category/:postId" component={PostDetail} />
+        <Route path="/:category/:post_id" component={PostDetail} />
     </div>
 )
 

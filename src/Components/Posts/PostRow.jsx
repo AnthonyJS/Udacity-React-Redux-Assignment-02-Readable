@@ -1,8 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import Vote from '../Shared/Vote'
-import { UpVotePost, DownVotePost } from '../../actions/postActions'
+import {
+    UpVotePost,
+    DownVotePost,
+    UpdateCurrentPostId
+} from '../../actions/postActions'
 
 const PostRow = ({
     id,
@@ -19,7 +24,9 @@ const PostRow = ({
     downVotePost
 }) => (
     <li key={id}>
-        <a href={`/${category}/${id}`}>{id}</a>
+        <Link to={`/${category}/${id}`} onClick={() => updateCurrentPostId(id)}>
+            {id}
+        </Link>
 
         <div>timestamp - {timestamp}</div>
         <div>title - {title}</div>
@@ -62,7 +69,8 @@ PostRow.propTypes = {
 
 const mapDispatchToProps = dispatch => ({
     upVotePost: id => dispatch(UpVotePost(id)),
-    downVotePost: id => dispatch(DownVotePost(id))
+    downVotePost: id => dispatch(DownVotePost(id)),
+    updateCurrentPostId: id => dispatch(UpdateCurrentPostId(id))
 })
 
 export default connect(null, mapDispatchToProps)(PostRow)
