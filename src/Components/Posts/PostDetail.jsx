@@ -4,15 +4,10 @@ import { connect } from 'react-redux'
 import { get } from 'lodash'
 import { Link } from 'react-router-dom'
 import dateFormat from 'dateformat'
-import Vote from '../Shared/Vote'
+import PostVote from './PostVote'
 import EditPost from './EditPost'
 
-import {
-    UpVotePost,
-    DownVotePost,
-    GetPostById,
-    UpdateCurrentPostId
-} from '../../actions/postActions'
+import { GetPostById, UpdateCurrentPostId } from '../../actions/postActions'
 
 const PostDetail = ({
     id,
@@ -21,11 +16,8 @@ const PostDetail = ({
     body,
     author,
     category,
-    deleted,
     voteScore,
     deleteHandler,
-    upVotePost,
-    downVotePost,
     match,
     getPostById,
     updateCurrentPostId
@@ -63,11 +55,7 @@ const PostDetail = ({
                         Edit
                     </button>
                     <button onClick={e => deleteHandler(e, id)}>Delete</button>
-                    <Vote
-                        voteScore={voteScore}
-                        handleUpVote={() => upVotePost(id)}
-                        handleDownVote={() => downVotePost(id)}
-                    />
+                    <PostVote voteScore={voteScore} id={id} />
                 </div>
             )}
             <EditPost postId={id} />
@@ -82,11 +70,8 @@ PostDetail.propTypes = {
     body: PropTypes.string,
     author: PropTypes.string,
     category: PropTypes.string,
-    deleted: PropTypes.bool,
     voteScore: PropTypes.number,
     deleteHandler: PropTypes.func,
-    upVotePost: PropTypes.func,
-    downVotePost: PropTypes.func,
     getPostById: PropTypes.func.isRequired,
     updateCurrentPostId: PropTypes.func.isRequired,
     match: PropTypes.object
@@ -97,8 +82,6 @@ const mapStateToProps = ({ content }) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    upVotePost: id => dispatch(UpVotePost(id)),
-    downVotePost: id => dispatch(DownVotePost(id)),
     getPostById: id => dispatch(GetPostById(id)),
     updateCurrentPostId: id => dispatch(UpdateCurrentPostId(id))
 })
