@@ -3,12 +3,8 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import dateFormat from 'dateformat'
-import Vote from '../Shared/Vote'
-import {
-    UpVotePost,
-    DownVotePost,
-    UpdateCurrentPostId
-} from '../../actions/postActions'
+import PostVote from './PostVote'
+import { UpdateCurrentPostId } from '../../actions/postActions'
 
 const PostRow = ({
     id,
@@ -17,12 +13,8 @@ const PostRow = ({
     body,
     author,
     category,
-    deleted,
-    voteScore,
     updateCurrentPostId,
-    deleteHandler,
-    upVotePost,
-    downVotePost
+    deleteHandler
 }) => (
     <li key={id}>
         <Link to={`/${category}/${id}`} onClick={() => updateCurrentPostId(id)}>
@@ -47,11 +39,7 @@ const PostRow = ({
             Edit
         </button>
         <button onClick={e => deleteHandler(e, id)}>Delete</button>
-        <Vote
-            voteScore={voteScore}
-            handleUpVote={() => upVotePost(id)}
-            handleDownVote={() => downVotePost(id)}
-        />
+        <PostVote id={id} />
     </li>
 )
 
@@ -62,17 +50,11 @@ PostRow.propTypes = {
     body: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
     category: PropTypes.string.isRequired,
-    deleted: PropTypes.bool,
-    voteScore: PropTypes.number.isRequired,
     updateCurrentPostId: PropTypes.func.isRequired,
-    deleteHandler: PropTypes.func.isRequired,
-    upVotePost: PropTypes.func.isRequired,
-    downVotePost: PropTypes.func.isRequired
+    deleteHandler: PropTypes.func.isRequired
 }
 
 const mapDispatchToProps = dispatch => ({
-    upVotePost: id => dispatch(UpVotePost(id)),
-    downVotePost: id => dispatch(DownVotePost(id)),
     updateCurrentPostId: id => dispatch(UpdateCurrentPostId(id))
 })
 
