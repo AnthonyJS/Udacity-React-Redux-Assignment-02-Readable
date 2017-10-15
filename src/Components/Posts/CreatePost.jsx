@@ -4,11 +4,10 @@ import PropTypes from 'prop-types'
 import PostForm from './PostForm'
 import { AddPost } from '../../Features/Posts/postActions'
 
-const CreatePost = ({ addPost, category }) => {
+const CreatePost = ({ addPost }) => {
     const handleSubmit = values => {
         const newPost = {
-            ...values,
-            category
+            ...values
         }
 
         addPost(newPost)
@@ -26,8 +25,7 @@ const CreatePost = ({ addPost, category }) => {
 }
 
 CreatePost.propTypes = {
-    addPost: PropTypes.func.isRequired,
-    category: PropTypes.string.isRequired
+    addPost: PropTypes.func.isRequired
 }
 
 const mapDispatchToProps = dispatch => ({

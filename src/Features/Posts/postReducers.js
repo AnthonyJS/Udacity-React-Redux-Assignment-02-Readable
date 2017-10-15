@@ -8,7 +8,7 @@ import {
     DOWN_VOTE_POST
 } from './postActions'
 
-export default function Reducer(state = { posts: {} }, action) {
+export default function Reducer(state = {}, action) {
     switch (action.type) {
         case GET_POSTS:
             return {
