@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Field, reduxForm } from 'redux-form'
+import { Field, reduxForm, reset } from 'redux-form'
+
+const afterSubmit = (result, dispatch) => dispatch(reset('comment'))
 
 const CommentForm = ({ handleSubmit }) => (
     <div>
@@ -17,5 +19,6 @@ CommentForm.propTypes = {
 }
 
 export default reduxForm({
-    form: 'comment'
+    form: 'comment',
+    onSubmitSuccess: afterSubmit
 })(CommentForm)
