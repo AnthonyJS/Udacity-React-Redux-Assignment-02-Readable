@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { Header, ROOT_URL } from '../../data/header'
+import { Header, ROOT_URL } from '../../Common/header'
 
 const getPostsByCategory = category =>
     axios
