@@ -1,7 +1,8 @@
 import {
     GET_COMMENTS_BY_POST_ID,
     UP_VOTE_COMMENT,
-    DOWN_VOTE_COMMENT
+    DOWN_VOTE_COMMENT,
+    ADD_COMMENT
 } from './CommentActions'
 
 export default function Reducer(state = {}, action) {
@@ -13,6 +14,11 @@ export default function Reducer(state = {}, action) {
                     (prev, curr) => ({ ...prev, [curr.id]: curr }),
                     {}
                 )
+            }
+        case ADD_COMMENT:
+            return {
+                ...state,
+                [action.payload.id]: action.payload
             }
         case UP_VOTE_COMMENT:
             return {

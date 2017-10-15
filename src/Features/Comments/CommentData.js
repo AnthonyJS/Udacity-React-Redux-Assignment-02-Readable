@@ -6,3 +6,6 @@ export const getCommentsByPostId = id =>
 
 export const updateCommentVote = params =>
     axios.post(`${ROOT_URL}/comments/${params.id}`, params, Header)
+
+export const addComment = params =>
+    axios.post(`${ROOT_URL}/comments`, params, Header)

@@ -1,8 +1,14 @@
-import { getCommentsByPostId, updateCommentVote } from './CommentData'
+import uuid from 'uuid/v4'
+import {
+    getCommentsByPostId,
+    updateCommentVote,
+    addComment
+} from './CommentData'
 
 export const GET_COMMENTS_BY_POST_ID = 'GET_COMMENTS_BY_POST_ID'
 export const UP_VOTE_COMMENT = 'UP_VOTE_COMMENT'
 export const DOWN_VOTE_COMMENT = 'DOWN_VOTE_COMMENT'
+export const ADD_COMMENT = 'ADD_COMMENT'
 
 export const GetCommentsByPostId = id => dispatch =>
     getCommentsByPostId(id).then(data => {
@@ -27,3 +33,24 @@ export const DownVoteComment = id => dispatch =>
             payload: id
         })
     })
+
+export const AddComment = ({ body, author, postId }) => {
+    const comment = {
+        id: uuid(),
+        parentId: postId,
+        timestamp: Date.now(),
+        body,
+        author,
+        deleted: false,
+        parentDeleted: false,
+        voteScore: 1
+    }
+
+    return dispatch =>
+        addComment(comment).then(() => {
+            dispatch({
+                type: ADD_COMMENT,
+                payload: comment
+            })
+        })
+}

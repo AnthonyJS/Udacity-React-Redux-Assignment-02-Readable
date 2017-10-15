@@ -58,10 +58,6 @@ export default function Reducer(state = { posts: {} }, action) {
                 currentPostId: action.payload
             }
         case UP_VOTE_POST:
-            // const tempPostsa = { ...state.posts }
-
-            // tempPostsa[action.payload].voteScore++
-
             return {
                 ...state,
                 posts: {

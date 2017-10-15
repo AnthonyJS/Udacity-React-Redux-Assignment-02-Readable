@@ -7,6 +7,7 @@ import dateFormat from 'dateformat'
 import PostVote from './PostVote'
 import PostModifyControls from './PostModifyControls'
 import EditPost from './EditPost'
+import Comments from '../Comments'
 
 import { GetPostById, UpdateCurrentPostId } from '../../actions/postActions'
 
@@ -50,6 +51,7 @@ const PostDetail = ({
                 </div>
             )}
             <EditPost postId={id} />
+            <Comments postId={id} />
         </div>
     )
 }
