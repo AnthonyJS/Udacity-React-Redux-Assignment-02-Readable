@@ -65,8 +65,8 @@ PostDetail.propTypes = {
     match: PropTypes.object
 }
 
-const mapStateToProps = ({ content }, ownProps) => ({
-    ...content.posts[ownProps.match.params.post_id]
+const mapStateToProps = ({ posts }, ownProps) => ({
+    ...posts[ownProps.match.params.post_id]
 })
 
 const mapDispatchToProps = dispatch => ({

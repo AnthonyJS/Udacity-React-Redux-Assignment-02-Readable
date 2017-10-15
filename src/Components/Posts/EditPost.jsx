@@ -26,8 +26,8 @@ EditPost.propTypes = {
     updatePost: PropTypes.func.isRequired
 }
 
-const mapStateToProps = (state, ownProps) => ({
-    initialValues: state.content.posts[ownProps.postId]
+const mapStateToProps = ({ posts }, ownProps) => ({
+    initialValues: posts[ownProps.postId]
 })
 
 const mapDispatchToProps = dispatch => ({

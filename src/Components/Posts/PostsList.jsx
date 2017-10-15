@@ -55,8 +55,8 @@ PostsList.propTypes = {
     match: PropTypes.object.isRequired
 }
 
-const mapStateToProps = ({ content, category }) => ({
-    posts: Object.values(content.posts),
+const mapStateToProps = ({ posts, category }) => ({
+    posts: Object.values(posts),
     categories: category.categories
 })
 

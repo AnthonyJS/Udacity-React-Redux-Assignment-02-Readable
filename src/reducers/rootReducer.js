@@ -5,7 +5,7 @@ import categoryReducers from '../Features/Categories/categoryReducers'
 import commentReducers from '../Features/Comments/commentReducers'
 
 const rootReducer = combineReducers({
-    content: postReducers,
+    posts: postReducers,
     comments: commentReducers,
     category: categoryReducers,
     form: formReducer

@@ -20,8 +20,8 @@ PostVote.propTypes = {
     downVotePost: PropTypes.func
 }
 
-const mapStateToProps = ({ content }, ownProps) => ({
-    voteScore: content.posts[ownProps.id].voteScore
+const mapStateToProps = ({ posts }, ownProps) => ({
+    voteScore: posts && posts[ownProps.id] && posts[ownProps.id].voteScore
 })
 
 const mapDispatchToProps = dispatch => ({

@@ -12,8 +12,7 @@ export default function Reducer(state = { posts: {} }, action) {
     switch (action.type) {
         case GET_POSTS:
             return {
-                ...state,
-                posts: action.payload.reduce(
+                ...action.payload.reduce(
                     (prev, curr) => ({ ...prev, [curr.id]: curr }),
                     {}
                 )
@@ -22,55 +21,39 @@ export default function Reducer(state = { posts: {} }, action) {
         case GET_POST_BY_ID:
             return {
                 ...state,
-                posts: {
-                    ...state.posts,
-                    [action.payload.id]: action.payload
-                }
+                [action.payload.id]: action.payload
             }
 
         case ADD_POST:
             return {
                 ...state,
-                posts: {
-                    ...state.posts,
-                    [action.payload.id]: action.payload
-                }
+                [action.payload.id]: action.payload
             }
         case DELETE_POST:
-            const tempPosts = { ...state.posts }
+            const tempPosts = { ...state }
             delete tempPosts[action.payload]
             return {
-                ...state,
-                posts: tempPosts
+                ...tempPosts
             }
         case EDIT_POST:
             return {
                 ...state,
-                posts: {
-                    ...state.posts,
-                    [action.payload.id]: action.payload
-                }
+                [action.payload.id]: action.payload
             }
         case UP_VOTE_POST:
             return {
                 ...state,
-                posts: {
-                    ...state.posts,
-                    [action.payload]: {
-                        ...state.posts[action.payload],
-                        voteScore: state.posts[action.payload].voteScore + 1
-                    }
+                [action.payload]: {
+                    ...state[action.payload],
+                    voteScore: state[action.payload].voteScore + 1
                 }
             }
         case DOWN_VOTE_POST:
             return {
                 ...state,
-                posts: {
-                    ...state.posts,
-                    [action.payload]: {
-                        ...state.posts[action.payload],
-                        voteScore: state.posts[action.payload].voteScore - 1
-                    }
+                [action.payload]: {
+                    ...state[action.payload],
+                    voteScore: state[action.payload].voteScore - 1
                 }
             }
         default:
