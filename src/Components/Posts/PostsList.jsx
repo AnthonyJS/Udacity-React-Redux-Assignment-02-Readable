@@ -4,15 +4,11 @@ import { get } from 'lodash'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { GetPosts } from '../../Features/Posts/postActions'
-import { GetCategories } from '../../Features/Categories/categoryActions'
-import CreatePost from './CreatePost'
 import PostRow from './PostRow'
 
 class PostsList extends Component {
     componentDidMount() {
-        const { getPosts, getCategories, match } = this.props
-
-        getCategories()
+        const { getPosts, match } = this.props
 
         this.category = get(match, 'params.category')
 
@@ -24,7 +20,6 @@ class PostsList extends Component {
 
         return (
             <div>
-                {this.category && <CreatePost category={this.category} />}
                 <Link to="/">Link to all</Link>
                 <ul>
                     {categories.map(cat => (
@@ -50,7 +45,6 @@ PostsList.propTypes = {
     posts: PropTypes.array.isRequired,
     categories: PropTypes.array.isRequired,
     getPosts: PropTypes.func.isRequired,
-    getCategories: PropTypes.func.isRequired,
     match: PropTypes.object.isRequired
 }
 
@@ -60,8 +54,7 @@ const mapStateToProps = ({ posts, category }) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    getPosts: category => dispatch(GetPosts(category)),
-    getCategories: () => dispatch(GetCategories())
+    getPosts: category => dispatch(GetPosts(category))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostsList)
