@@ -3,8 +3,7 @@ import {
     UP_VOTE_COMMENT,
     DOWN_VOTE_COMMENT,
     ADD_COMMENT,
-    DELETE_COMMENT,
-    CURRENT_COMMENT_ID
+    DELETE_COMMENT
 } from './commentActions'
 
 export default function Reducer(state = {}, action) {
@@ -43,12 +42,6 @@ export default function Reducer(state = {}, action) {
             delete tempComments[action.payload]
             return {
                 ...tempComments
-            }
-
-        case CURRENT_COMMENT_ID:
-            return {
-                ...state,
-                currentCommentId: action.payload
             }
         default:
             return state

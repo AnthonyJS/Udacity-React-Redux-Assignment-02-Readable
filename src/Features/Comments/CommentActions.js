@@ -11,7 +11,6 @@ export const UP_VOTE_COMMENT = 'UP_VOTE_COMMENT'
 export const DOWN_VOTE_COMMENT = 'DOWN_VOTE_COMMENT'
 export const ADD_COMMENT = 'ADD_COMMENT'
 export const DELETE_COMMENT = 'DELETE_COMMENT'
-export const CURRENT_COMMENT_ID = 'CURRENT_COMMENT_ID'
 
 export const GetCommentsByPostId = id => dispatch =>
     getCommentsByPostId(id).then(data => {
@@ -43,12 +42,6 @@ export const DeleteComment = id => dispatch =>
             type: DELETE_COMMENT,
             payload: id
         })
-    })
-
-export const UpdateCurrentCommentId = id => dispatch =>
-    dispatch({
-        type: CURRENT_COMMENT_ID,
-        payload: id
     })
 
 export const AddComment = ({ body, author, postId }) => {
