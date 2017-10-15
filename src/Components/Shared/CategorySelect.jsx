@@ -2,9 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Field } from 'redux-form'
+import CategoryLoader from './CategoryLoader'
 
 const CategorySelect = ({ categories }) => (
     <div>
+        <CategoryLoader />
         <Field name="category" component="select">
             {categories.map(cat => (
                 <option value={cat.name}>{cat.name}</option>

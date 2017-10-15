@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { GetPosts } from '../../Features/Posts/postActions'
 import PostRow from './PostRow'
+import CategoryLoader from '../Shared/CategoryLoader'
 
 class PostsList extends Component {
     componentDidMount() {
@@ -20,6 +21,8 @@ class PostsList extends Component {
 
         return (
             <div>
+                <CategoryLoader />
+                <Link to="/create">Add post</Link>
                 <Link to="/">Link to all</Link>
                 <ul>
                     {categories.map(cat => (
