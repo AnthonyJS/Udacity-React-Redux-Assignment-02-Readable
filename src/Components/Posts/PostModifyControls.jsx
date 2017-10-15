@@ -10,7 +10,7 @@ const PostModifyControls = ({
     id
 }) => (
     <ModifyControls
-        handleUpdateCurrentPostId={() => handleUpdateCurrentPostId(id)}
+        handleUpdateCurrentId={() => handleUpdateCurrentPostId(id)}
         handleDelete={() => handleDelete(id)}
         id={id}
     />

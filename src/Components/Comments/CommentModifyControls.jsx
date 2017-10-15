@@ -13,7 +13,7 @@ const CommentModifyControls = ({
     id
 }) => (
     <ModifyControls
-        handleUpdateCurrentCommentId={() => handleUpdateCurrentCommentId(id)}
+        handleUpdateCurrentId={() => handleUpdateCurrentCommentId(id)}
         handleDelete={() => handleDelete(id)}
         id={id}
     />

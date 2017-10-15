@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const ModifyControls = ({ handleUpdateCurrentPostId, handleDelete, id }) => (
+const ModifyControls = ({ handleUpdateCurrentId, handleDelete, id }) => (
     <div>
         <button
             value="edit"
             onClick={() => {
-                handleUpdateCurrentPostId(id)
+                handleUpdateCurrentId(id)
             }}
         >
             Edit
@@ -17,7 +17,7 @@ const ModifyControls = ({ handleUpdateCurrentPostId, handleDelete, id }) => (
 
 ModifyControls.propTypes = {
     id: PropTypes.string.isRequired,
-    handleUpdateCurrentPostId: PropTypes.func.isRequired,
+    handleUpdateCurrentId: PropTypes.func.isRequired,
     handleDelete: PropTypes.func.isRequired
 }
 
