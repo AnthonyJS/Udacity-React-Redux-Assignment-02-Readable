@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { GetCommentsByPostId } from '../../Features/Comments/CommentActions'
+import { GetCommentsByPostId } from '../../Features/Comments/commentActions'
 import CommentRow from './CommentRow'
 
 class CommentsList extends Component {

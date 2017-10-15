@@ -7,7 +7,7 @@ import {
     CURRENT_POST_ID,
     UP_VOTE_POST,
     DOWN_VOTE_POST
-} from '../actions/postActions'
+} from './postActions'
 
 export default function Reducer(state = { posts: {} }, action) {
     switch (action.type) {

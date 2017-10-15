@@ -6,7 +6,7 @@ import {
     addPost,
     updatePost,
     updatePostVote
-} from '../data/postData'
+} from './postData'
 
 export const GET_POSTS = 'GET_POSTS'
 export const ADD_POST = 'ADD_POST'

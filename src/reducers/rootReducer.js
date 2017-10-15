@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
 import { reducer as formReducer } from 'redux-form'
-import postReducers from './postReducers'
-import categoryReducers from './categoryReducers'
-import commentReducers from '../Features/Comments/CommentReducers'
+import postReducers from '../Features/Posts/postReducers'
+import categoryReducers from '../Features/Categories/categoryReducers'
+import commentReducers from '../Features/Comments/commentReducers'
 
 const rootReducer = combineReducers({
     content: postReducers,

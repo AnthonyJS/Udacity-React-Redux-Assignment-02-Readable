@@ -2,7 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import ModifyControls from '../Shared/ModifyControls'
-import { UpdateCurrentPostId, DeletePost } from '../../actions/postActions'
+import {
+    UpdateCurrentPostId,
+    DeletePost
+} from '../../Features/Posts/postActions'
 
 const PostModifyControls = ({
     handleUpdateCurrentPostId,

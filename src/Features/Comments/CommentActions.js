@@ -4,7 +4,7 @@ import {
     updateCommentVote,
     addComment,
     deleteComment
-} from './CommentData'
+} from './commentData'
 
 export const GET_COMMENTS_BY_POST_ID = 'GET_COMMENTS_BY_POST_ID'
 export const UP_VOTE_COMMENT = 'UP_VOTE_COMMENT'

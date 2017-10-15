@@ -6,8 +6,8 @@ import {
     GetPosts,
     DeletePost,
     UpdateCurrentPostId
-} from '../../actions/postActions'
-import { GetCategories } from '../../actions/categoryActions'
+} from '../../Features/Posts/postActions'
+import { GetCategories } from '../../Features/Categories/categoryActions'
 import CreatePost from './CreatePost'
 import EditPost from './EditPost'
 import PostRow from './PostRow'

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import dateFormat from 'dateformat'
 import PostVote from './PostVote'
 import PostModifyControls from './PostModifyControls'
-import { UpdateCurrentPostId } from '../../actions/postActions'
+import { UpdateCurrentPostId } from '../../Features/Posts/postActions'
 
 const PostRow = ({
     id,

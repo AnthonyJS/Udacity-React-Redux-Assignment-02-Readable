@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import CommentForm from './CommentForm'
-import { AddComment } from '../../Features/Comments/CommentActions'
+import { AddComment } from '../../Features/Comments/commentActions'
 
 const CreateComment = ({ addComment, postId }) => {
     const handleSubmit = values => {

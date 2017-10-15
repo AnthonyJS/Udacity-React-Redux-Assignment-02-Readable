@@ -5,7 +5,7 @@ import {
     ADD_COMMENT,
     DELETE_COMMENT,
     CURRENT_COMMENT_ID
-} from './CommentActions'
+} from './commentActions'
 
 export default function Reducer(state = {}, action) {
     switch (action.type) {

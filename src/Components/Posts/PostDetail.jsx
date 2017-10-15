@@ -9,7 +9,10 @@ import PostModifyControls from './PostModifyControls'
 import EditPost from './EditPost'
 import Comments from '../Comments'
 
-import { GetPostById, UpdateCurrentPostId } from '../../actions/postActions'
+import {
+    GetPostById,
+    UpdateCurrentPostId
+} from '../../Features/Posts/postActions'
 
 const PostDetail = ({
     id,

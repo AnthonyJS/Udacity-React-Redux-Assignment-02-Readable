@@ -5,7 +5,7 @@ import ModifyControls from '../Shared/ModifyControls'
 import {
     UpdateCurrentCommentId,
     DeleteComment
-} from '../../Features/Comments/CommentActions'
+} from '../../Features/Comments/commentActions'
 
 const CommentModifyControls = ({
     handleUpdateCurrentCommentId,

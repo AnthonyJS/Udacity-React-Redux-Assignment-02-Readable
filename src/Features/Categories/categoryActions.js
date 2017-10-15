@@ -1,4 +1,4 @@
-import { getCategories } from '../data/categoryData'
+import { getCategories } from './categoryData'
 
 export const GET_CATEGORIES = 'GET_CATEGORIES'
 

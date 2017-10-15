@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Vote from '../Shared/Vote'
 
-import { UpVotePost, DownVotePost } from '../../actions/postActions'
+import { UpVotePost, DownVotePost } from '../../Features/Posts/postActions'
 
 const PostVote = ({ voteScore, id, upVotePost, downVotePost }) => (
     <Vote

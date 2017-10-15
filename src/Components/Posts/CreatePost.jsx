@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import PostForm from './PostForm'
-import { AddPost } from '../../actions/postActions'
+import { AddPost } from '../../Features/Posts/postActions'
 
 const CreatePost = ({ addPost, category }) => {
     const handleSubmit = values => {

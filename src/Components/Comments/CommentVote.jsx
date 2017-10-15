@@ -5,7 +5,7 @@ import Vote from '../Shared/Vote'
 import {
     UpVoteComment,
     DownVoteComment
-} from '../../Features/Comments/CommentActions'
+} from '../../Features/Comments/commentActions'
 
 const CommentVote = ({ voteScore, id, upVoteComment, downVoteComment }) => (
     <Vote
