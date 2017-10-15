@@ -7,7 +7,7 @@ import { DeletePost } from '../../Features/Posts/postActions'
 
 const PostModifyControls = ({ handleDelete, category, id, history }) => {
     const handleEdit = () => {
-        history.push(`/${category}/${id}`)
+        history.push(`/${category}/${id}/edit`)
     }
 
     return (

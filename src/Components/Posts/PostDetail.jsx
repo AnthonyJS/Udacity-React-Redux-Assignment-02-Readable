@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom'
 import dateFormat from 'dateformat'
 import PostVote from './PostVote'
 import PostModifyControls from './PostModifyControls'
-import EditPost from './EditPost'
 import Comments from '../Comments'
 import { GetPostById } from '../../Features/Posts/postActions'
 
@@ -48,7 +47,6 @@ const PostDetail = ({
                     <PostVote id={id} />
                 </div>
             )}
-            <EditPost postId={id} />
             <Comments postId={id} />
         </div>
     )
