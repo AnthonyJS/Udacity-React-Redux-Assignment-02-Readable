@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { GetCommentsByPostId } from '../../Features/Comments/CommentActions'
+import CommentRow from './CommentRow'
 
 class CommentsList extends Component {
     componentDidMount() {
@@ -15,7 +16,9 @@ class CommentsList extends Component {
 
         return (
             <div>
-                <ul>{comments.map(comment => <li>{comment.body}</li>)}</ul>
+                <ul>
+                    {comments.map(comment => <CommentRow comment={comment} />)}
+                </ul>
             </div>
         )
     }
