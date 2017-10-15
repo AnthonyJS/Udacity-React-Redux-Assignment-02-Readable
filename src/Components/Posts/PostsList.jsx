@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { get } from 'lodash'
 import { Link } from 'react-router-dom'
-import { GetPosts, UpdateCurrentPostId } from '../../Features/Posts/postActions'
+import PropTypes from 'prop-types'
+import { GetPosts } from '../../Features/Posts/postActions'
 import { GetCategories } from '../../Features/Categories/categoryActions'
 import CreatePost from './CreatePost'
 import PostRow from './PostRow'
@@ -19,12 +20,7 @@ class PostsList extends Component {
     }
 
     render() {
-        const {
-            posts,
-            currentPostId,
-            updateCurrentPostId,
-            categories
-        } = this.props
+        const { posts, categories } = this.props
 
         return (
             <div>
@@ -45,26 +41,27 @@ class PostsList extends Component {
                     {posts.map(post => <PostRow key={post.id} {...post} />)}
                 </ul>
 
-                {this.category && (
-                    <CreatePost
-                        postId={currentPostId}
-                        category={this.category}
-                    />
-                )}
+                {this.category && <CreatePost category={this.category} />}
             </div>
         )
     }
 }
 
+PostsList.propTypes = {
+    posts: PropTypes.array.isRequired,
+    categories: PropTypes.array.isRequired,
+    getPosts: PropTypes.func.isRequired,
+    getCategories: PropTypes.func.isRequired,
+    match: PropTypes.object.isRequired
+}
+
 const mapStateToProps = ({ content, category }) => ({
     posts: Object.values(content.posts),
-    currentPostId: content.currentPostId,
     categories: category.categories
 })
 
 const mapDispatchToProps = dispatch => ({
     getPosts: category => dispatch(GetPosts(category)),
-    updateCurrentPostId: id => dispatch(UpdateCurrentPostId(id)),
     getCategories: () => dispatch(GetCategories())
 })
 
