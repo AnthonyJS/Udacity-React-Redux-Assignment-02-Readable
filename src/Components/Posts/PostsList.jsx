@@ -17,19 +17,25 @@ class PostsList extends Component {
     }
 
     render() {
-        const { posts, categories } = this.props
+        const { posts, categories, match, getPosts } = this.props
+
+        this.category = get(match, 'params.category')
 
         return (
             <div>
                 <CategoryLoader />
-                <Link to="/create">Add post</Link>
+                {this.category ? (
+                    <Link to={`/${this.category}/create`}>Add post</Link>
+                ) : (
+                    <Link to="/create">Add post</Link>
+                )}
                 <Link to="/">Link to all</Link>
                 <ul>
                     {categories.map(cat => (
                         <li key={cat.name}>
                             <Link
                                 to={`/${cat.name}`}
-                                onClick={() => this.props.getPosts(cat.name)}
+                                onClick={() => getPosts(cat.name)}
                             >
                                 {cat.name}
                             </Link>

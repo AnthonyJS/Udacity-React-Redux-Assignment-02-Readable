@@ -5,7 +5,7 @@ import { Link, withRouter } from 'react-router-dom'
 import PostForm from './PostForm'
 import { AddPost } from '../../Features/Posts/postActions'
 
-const CreatePost = ({ addPost, history }) => {
+const CreatePost = ({ addPost, history, category }) => {
     const handleSubmit = values => {
         const newPost = {
             ...values
@@ -20,7 +20,7 @@ const CreatePost = ({ addPost, history }) => {
             <Link to="/">Go to all</Link>
             Add post<PostForm
                 onSubmit={handleSubmit}
-                initialValues={{}}
+                initialValues={{ category }}
                 enableReinitialize
             />
         </div>
@@ -29,7 +29,8 @@ const CreatePost = ({ addPost, history }) => {
 
 CreatePost.propTypes = {
     addPost: PropTypes.func.isRequired,
-    history: PropTypes.object.isRequired
+    history: PropTypes.object.isRequired,
+    category: PropTypes.string
 }
 
 const mapDispatchToProps = dispatch => ({

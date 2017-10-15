@@ -13,6 +13,13 @@ const App = () => (
         <Switch>
             <Route path="/" exact render={() => <PostsList />} />
             <Route path="/create" exact component={CreatePost} />
+            <Route
+                path="/:category/create"
+                exact
+                render={vals => (
+                    <CreatePost category={vals.match.params.category} />
+                )}
+            />
             <Route path="/:category" exact component={PostsList} />
             <Route path="/:category/:post_id" exact component={PostDetail} />
             <Route
