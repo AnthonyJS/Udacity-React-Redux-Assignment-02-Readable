@@ -5,6 +5,7 @@ import PostsList from './Components/Posts'
 import PostDetail from './Components/Posts/PostDetail'
 import CreatePost from './Components/Posts/CreatePost'
 import EditPost from './Components/Posts/EditPost'
+import EditComment from './Components/Comments/EditComment'
 
 import './App.css'
 
@@ -26,6 +27,13 @@ const App = () => (
                 path="/:category/:post_id/edit"
                 exact
                 render={vals => <EditPost postId={vals.match.params.post_id} />}
+            />
+            <Route
+                path="/:category/:post_id/edit/:comment_id"
+                exact
+                render={vals => (
+                    <EditComment commentId={vals.match.params.comment_id} />
+                )}
             />
         </Switch>
     </div>

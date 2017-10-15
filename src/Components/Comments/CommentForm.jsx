@@ -7,8 +7,8 @@ const afterSubmit = (result, dispatch) => dispatch(reset('comment'))
 const CommentForm = ({ handleSubmit }) => (
     <div>
         <form onSubmit={handleSubmit}>
-            <Field name="body" component="input" type="text" />
-            <Field name="author" component="input" type="text" />
+            Body<Field name="body" component="input" type="text" />
+            Author<Field name="author" component="input" type="text" />
             <button type="submit">Submit</button>
         </form>
     </div>

@@ -3,7 +3,8 @@ import {
     UP_VOTE_COMMENT,
     DOWN_VOTE_COMMENT,
     ADD_COMMENT,
-    DELETE_COMMENT
+    DELETE_COMMENT,
+    EDIT_COMMENT
 } from './commentActions'
 
 export default function Reducer(state = {}, action) {
@@ -17,6 +18,11 @@ export default function Reducer(state = {}, action) {
                 )
             }
         case ADD_COMMENT:
+            return {
+                ...state,
+                [action.payload.id]: action.payload
+            }
+        case EDIT_COMMENT:
             return {
                 ...state,
                 [action.payload.id]: action.payload

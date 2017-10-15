@@ -3,7 +3,8 @@ import {
     getCommentsByPostId,
     updateCommentVote,
     addComment,
-    deleteComment
+    deleteComment,
+    updateComment
 } from './commentData'
 
 export const GET_COMMENTS_BY_POST_ID = 'GET_COMMENTS_BY_POST_ID'
@@ -11,6 +12,7 @@ export const UP_VOTE_COMMENT = 'UP_VOTE_COMMENT'
 export const DOWN_VOTE_COMMENT = 'DOWN_VOTE_COMMENT'
 export const ADD_COMMENT = 'ADD_COMMENT'
 export const DELETE_COMMENT = 'DELETE_COMMENT'
+export const EDIT_COMMENT = 'EDIT_COMMENT'
 
 export const GetCommentsByPostId = id => dispatch =>
     getCommentsByPostId(id).then(data => {
@@ -64,3 +66,11 @@ export const AddComment = ({ body, author, postId }) => {
             })
         })
 }
+
+export const UpdateComment = comment => dispatch =>
+    updateComment(comment).then(() => {
+        dispatch({
+            type: EDIT_COMMENT,
+            payload: comment
+        })
+    })

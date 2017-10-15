@@ -5,7 +5,10 @@ import CommentModifyControls from './CommentModifyControls'
 
 const CommentRow = ({ comment }) => (
     <li>
-        {comment.body}
+        Body:{comment.body}
+        <br />
+        Author:{comment.author}
+        <br />
         <CommentVote id={comment.id} />
         <CommentModifyControls id={comment.id} />
     </li>

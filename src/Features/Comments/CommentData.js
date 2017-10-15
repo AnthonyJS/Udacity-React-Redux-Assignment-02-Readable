@@ -12,3 +12,6 @@ export const addComment = params =>
 
 export const deleteComment = id =>
     axios.delete(`${ROOT_URL}/comments/${id}`, Header).then(res => res.data)
+
+export const updateComment = params =>
+    axios.put(`${ROOT_URL}/comments/${params.id}`, params, Header)
