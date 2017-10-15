@@ -24,6 +24,7 @@ class PostsList extends Component {
 
         return (
             <div>
+                {this.category && <CreatePost category={this.category} />}
                 <Link to="/">Link to all</Link>
                 <ul>
                     {categories.map(cat => (
@@ -40,8 +41,6 @@ class PostsList extends Component {
                 <ul>
                     {posts.map(post => <PostRow key={post.id} {...post} />)}
                 </ul>
-
-                {this.category && <CreatePost category={this.category} />}
             </div>
         )
     }

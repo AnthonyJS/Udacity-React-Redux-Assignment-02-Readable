@@ -6,13 +6,17 @@ import { AddPost } from '../../Features/Posts/postActions'
 
 const CreatePost = ({ addPost, category }) => {
     const handleSubmit = values => {
-        values.category = category
-        addPost(values)
+        const newPost = {
+            ...values,
+            category
+        }
+
+        addPost(newPost)
     }
 
     return (
-        <div>
-            Create<PostForm
+        <div style={{ backgroundColor: '#eeeeee' }}>
+            Add post<PostForm
                 onSubmit={handleSubmit}
                 initialValues={{}}
                 enableReinitialize
