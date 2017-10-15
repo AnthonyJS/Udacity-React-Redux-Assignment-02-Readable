@@ -9,3 +9,6 @@ export const updateCommentVote = params =>
 
 export const addComment = params =>
     axios.post(`${ROOT_URL}/comments`, params, Header)
+
+export const deleteComment = id =>
+    axios.delete(`${ROOT_URL}/comments/${id}`, Header).then(res => res.data)
