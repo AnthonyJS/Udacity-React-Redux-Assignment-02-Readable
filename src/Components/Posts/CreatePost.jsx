@@ -12,7 +12,7 @@ const CreatePost = ({ addPost, history }) => {
         }
 
         addPost(newPost)
-        history.push('/')
+        history.goBack()
     }
 
     return (
