@@ -8,11 +8,7 @@ import PostVote from './PostVote'
 import PostModifyControls from './PostModifyControls'
 import EditPost from './EditPost'
 import Comments from '../Comments'
-
-import {
-    GetPostById,
-    UpdateCurrentPostId
-} from '../../Features/Posts/postActions'
+import { GetPostById } from '../../Features/Posts/postActions'
 
 const PostDetail = ({
     id,
@@ -22,12 +18,10 @@ const PostDetail = ({
     author,
     category,
     match,
-    getPostById,
-    updateCurrentPostId
+    getPostById
 }) => {
     if (!title) {
         const idFromUrl = get(match, 'params.post_id')
-        updateCurrentPostId(idFromUrl)
         getPostById(idFromUrl)
         return <div>Loading...</div>
     }
@@ -68,17 +62,15 @@ PostDetail.propTypes = {
     author: PropTypes.string,
     category: PropTypes.string,
     getPostById: PropTypes.func.isRequired,
-    updateCurrentPostId: PropTypes.func.isRequired,
     match: PropTypes.object
 }
 
-const mapStateToProps = ({ content }) => ({
-    ...content.posts[content.currentPostId]
+const mapStateToProps = ({ content }, ownProps) => ({
+    ...content.posts[ownProps.match.params.post_id]
 })
 
 const mapDispatchToProps = dispatch => ({
-    getPostById: id => dispatch(GetPostById(id)),
-    updateCurrentPostId: id => dispatch(UpdateCurrentPostId(id))
+    getPostById: id => dispatch(GetPostById(id))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostDetail)

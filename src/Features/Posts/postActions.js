@@ -14,7 +14,6 @@ export const EDIT_POST = 'EDIT_POST'
 export const DELETE_POST = 'DELETE_POST'
 export const UP_VOTE_POST = 'UP_VOTE_POST'
 export const DOWN_VOTE_POST = 'DOWN_VOTE_POST'
-export const CURRENT_POST_ID = 'CURRENT_POST_ID'
 export const GET_POST_BY_ID = 'GET_POST_BY_ID'
 
 export const GetPosts = category => dispatch =>
@@ -39,12 +38,6 @@ export const DeletePost = id => dispatch =>
             type: DELETE_POST,
             payload: id
         })
-    })
-
-export const UpdateCurrentPostId = id => dispatch =>
-    dispatch({
-        type: CURRENT_POST_ID,
-        payload: id
     })
 
 export const AddPost = ({ title, body, author, category }) => {

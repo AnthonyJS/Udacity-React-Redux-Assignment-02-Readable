@@ -4,7 +4,6 @@ import {
     ADD_POST,
     EDIT_POST,
     DELETE_POST,
-    CURRENT_POST_ID,
     UP_VOTE_POST,
     DOWN_VOTE_POST
 } from './postActions'
@@ -51,11 +50,6 @@ export default function Reducer(state = { posts: {} }, action) {
                     ...state.posts,
                     [action.payload.id]: action.payload
                 }
-            }
-        case CURRENT_POST_ID:
-            return {
-                ...state,
-                currentPostId: action.payload
             }
         case UP_VOTE_POST:
             return {

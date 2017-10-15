@@ -1,25 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import dateFormat from 'dateformat'
 import PostVote from './PostVote'
 import PostModifyControls from './PostModifyControls'
-import { UpdateCurrentPostId } from '../../Features/Posts/postActions'
 
-const PostRow = ({
-    id,
-    timestamp,
-    title,
-    body,
-    author,
-    category,
-    updateCurrentPostId
-}) => (
+const PostRow = ({ id, timestamp, title, body, author, category }) => (
     <li key={id}>
-        <Link to={`/${category}/${id}`} onClick={() => updateCurrentPostId(id)}>
-            {id}
-        </Link>
+        <Link to={`/${category}/${id}`}>{id}</Link>
         <div>
             timestamp -{' '}
             {dateFormat(timestamp, 'dddd, mmmm dS, yyyy, h:MM:ss TT')}
@@ -40,12 +28,7 @@ PostRow.propTypes = {
     title: PropTypes.string.isRequired,
     body: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
-    category: PropTypes.string.isRequired,
-    updateCurrentPostId: PropTypes.func.isRequired
+    category: PropTypes.string.isRequired
 }
 
-const mapDispatchToProps = dispatch => ({
-    updateCurrentPostId: id => dispatch(UpdateCurrentPostId(id))
-})
-
-export default connect(null, mapDispatchToProps)(PostRow)
+export default PostRow
