@@ -2,17 +2,19 @@ import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
+import uuid from 'uuid/v4'
 import PostForm from './PostForm'
 import { AddPost } from '../../Features/Posts/postActions'
 
 const CreatePost = ({ addPost, history, category }) => {
     const handleSubmit = values => {
         const newPost = {
-            ...values
+            ...values,
+            id: uuid()
         }
 
         addPost(newPost)
-        history.goBack()
+        history.push(`/${newPost.category}/${newPost.id}`)
     }
 
     return (

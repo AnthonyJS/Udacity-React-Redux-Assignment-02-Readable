@@ -1,4 +1,3 @@
-import uuid from 'uuid/v4'
 import {
     getPosts,
     getPostById,
@@ -40,14 +39,10 @@ export const DeletePost = id => dispatch =>
         })
     })
 
-export const AddPost = ({ title, body, author, category }) => {
+export const AddPost = vals => {
     const post = {
-        id: uuid(),
+        ...vals,
         timestamp: Date.now(),
-        title,
-        body,
-        author,
-        category,
         isDeleted: false,
         voteScore: 1
     }
