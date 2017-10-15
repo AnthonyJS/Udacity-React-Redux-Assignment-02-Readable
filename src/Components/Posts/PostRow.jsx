@@ -29,7 +29,7 @@ const PostRow = ({
         <div>author - {author}</div>
         <div>category - {category}</div>
 
-        <PostModifyControls id={id} />
+        <PostModifyControls id={id} category={category} />
         <PostVote id={id} />
     </li>
 )

@@ -2,14 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { get } from 'lodash'
 import { Link } from 'react-router-dom'
-import {
-    GetPosts,
-    DeletePost,
-    UpdateCurrentPostId
-} from '../../Features/Posts/postActions'
+import { GetPosts, UpdateCurrentPostId } from '../../Features/Posts/postActions'
 import { GetCategories } from '../../Features/Categories/categoryActions'
 import CreatePost from './CreatePost'
-import EditPost from './EditPost'
 import PostRow from './PostRow'
 
 class PostsList extends Component {
@@ -21,10 +16,6 @@ class PostsList extends Component {
         this.category = get(match, 'params.category')
 
         getPosts(this.category)
-    }
-
-    deleteHandler = id => {
-        this.props.deletePost(id)
     }
 
     render() {
@@ -51,35 +42,15 @@ class PostsList extends Component {
                     ))}
                 </ul>
                 <ul>
-                    {posts.map(post => (
-                        <PostRow
-                            key={post.id}
-                            {...post}
-                            updateCurrentPostId={updateCurrentPostId}
-                            deleteHandler={this.deleteHandler}
-                        />
-                    ))}
+                    {posts.map(post => <PostRow key={post.id} {...post} />)}
                 </ul>
-                {currentPostId ? (
-                    <EditPost postId={currentPostId} />
-                ) : (
-                    <div>
-                        {this.category && (
-                            <CreatePost
-                                postId={currentPostId}
-                                category={this.category}
-                            />
-                        )}
-                    </div>
-                )}
 
-                <button
-                    onClick={() => {
-                        updateCurrentPostId(null)
-                    }}
-                >
-                    Cancel edit
-                </button>
+                {this.category && (
+                    <CreatePost
+                        postId={currentPostId}
+                        category={this.category}
+                    />
+                )}
             </div>
         )
     }
@@ -93,7 +64,6 @@ const mapStateToProps = ({ content, category }) => ({
 
 const mapDispatchToProps = dispatch => ({
     getPosts: category => dispatch(GetPosts(category)),
-    deletePost: id => dispatch(DeletePost(id)),
     updateCurrentPostId: id => dispatch(UpdateCurrentPostId(id)),
     getCategories: () => dispatch(GetCategories())
 })
