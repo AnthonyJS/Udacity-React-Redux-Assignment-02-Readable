@@ -16,8 +16,21 @@ class PostsList extends Component {
         getPosts(this.category)
     }
 
+    componentWillReceiveProps(nextProps) {
+        const { match } = nextProps
+        const { getPosts } = this.props
+
+        const nextCategory = get(match, 'params.category')
+
+        if (this.category === nextCategory) return
+
+        this.category = nextCategory
+
+        getPosts(this.category)
+    }
+
     render() {
-        const { posts, categories, match, getPosts } = this.props
+        const { posts, categories, match } = this.props
 
         this.category = get(match, 'params.category')
 
@@ -33,12 +46,7 @@ class PostsList extends Component {
                 <ul>
                     {categories.map(cat => (
                         <li key={cat.name}>
-                            <Link
-                                to={`/${cat.name}`}
-                                onClick={() => getPosts(cat.name)}
-                            >
-                                {cat.name}
-                            </Link>
+                            <Link to={`/${cat.name}`}>{cat.name}</Link>
                         </li>
                     ))}
                 </ul>
