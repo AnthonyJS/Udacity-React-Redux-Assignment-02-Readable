@@ -58,21 +58,30 @@ export default function Reducer(state = { posts: {} }, action) {
                 currentPostId: action.payload
             }
         case UP_VOTE_POST:
-            const tempPostsa = { ...state.posts }
+            // const tempPostsa = { ...state.posts }
 
-            tempPostsa[action.payload].voteScore++
+            // tempPostsa[action.payload].voteScore++
 
             return {
                 ...state,
-                posts: tempPostsa
+                posts: {
+                    ...state.posts,
+                    [action.payload]: {
+                        ...state.posts[action.payload],
+                        voteScore: state.posts[action.payload].voteScore + 1
+                    }
+                }
             }
         case DOWN_VOTE_POST:
-            const tempPostsd = { ...state.posts }
-            tempPostsd[action.payload].voteScore--
-
             return {
                 ...state,
-                posts: tempPostsd
+                posts: {
+                    ...state.posts,
+                    [action.payload]: {
+                        ...state.posts[action.payload],
+                        voteScore: state.posts[action.payload].voteScore - 1
+                    }
+                }
             }
         default:
             return state

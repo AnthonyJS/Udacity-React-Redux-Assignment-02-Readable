@@ -15,20 +15,20 @@ export default function Reducer(state = {}, action) {
                 )
             }
         case UP_VOTE_COMMENT:
-            const tempComments1 = { ...state }
-
-            tempComments1[action.payload].voteScore++
-
             return {
-                ...tempComments1
+                ...state,
+                [action.payload]: {
+                    ...state[action.payload],
+                    voteScore: state[action.payload].voteScore + 1
+                }
             }
         case DOWN_VOTE_COMMENT:
-            const tempComments2 = { ...state }
-
-            tempComments2[action.payload].voteScore--
-
             return {
-                ...tempComments2
+                ...state,
+                [action.payload]: {
+                    ...state[action.payload],
+                    voteScore: state[action.payload].voteScore - 1
+                }
             }
         default:
             return state
