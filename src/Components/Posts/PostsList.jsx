@@ -16,8 +16,7 @@ class PostsList extends Component {
         getPosts(this.category)
     }
 
-    componentWillReceiveProps(nextProps) {
-        const { match } = nextProps
+    componentWillReceiveProps({ match }) {
         const { getPosts } = this.props
 
         const nextCategory = get(match, 'params.category')

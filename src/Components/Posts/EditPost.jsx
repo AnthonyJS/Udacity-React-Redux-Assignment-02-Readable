@@ -1,25 +1,25 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import PostForm from './PostForm'
 import { UpdatePost } from '../../Features/Posts/postActions'
 
 const EditPost = ({ initialValues, updatePost, history }) => {
     const handleSubmit = values => {
         updatePost(values)
-        history.goBack()
+        history.push(`/${values.category}/${values.id}`)
     }
 
     return (
         <div>
-            <Link to="/">Go to all</Link>
             Edit post
             <PostForm
                 onSubmit={handleSubmit}
                 initialValues={initialValues}
                 enableReinitialize
             />
+            <button onClick={() => history.goBack()}>Cancel</button>
         </div>
     )
 }
