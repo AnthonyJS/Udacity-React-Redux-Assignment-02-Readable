@@ -17,7 +17,9 @@ class CommentsList extends Component {
         return (
             <div>
                 <ul>
-                    {comments.map(comment => <CommentRow comment={comment} />)}
+                    {comments.map(comment => (
+                        <CommentRow key={comment.id} comment={comment} />
+                    ))}
                 </ul>
             </div>
         )

@@ -12,7 +12,7 @@ const CreateComment = ({ addComment, postId }) => {
 
     return (
         <div>
-            Create<CommentForm
+            Create comment<CommentForm
                 onSubmit={handleSubmit}
                 initialValues={{}}
                 enableReinitialize

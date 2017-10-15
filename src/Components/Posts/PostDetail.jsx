@@ -26,6 +26,7 @@ const PostDetail = ({
         const idFromUrl = get(match, 'params.post_id')
         updateCurrentPostId(idFromUrl)
         getPostById(idFromUrl)
+        return <div>Loading...</div>
     }
 
     return (
