@@ -5,11 +5,12 @@ import CommentVote from './CommentVote'
 import CommentModifyControls from './CommentModifyControls'
 import { DATE_FORMAT } from '../../Common/enums'
 import { Tr, Td } from '../../Common/styles'
+import { TrimLongString } from '../../Common/textHelpers'
 
 const CommentRow = ({ comment }) => (
     <Tr key={comment.id}>
         <Td>{dateFormat(comment.timestamp, DATE_FORMAT)}</Td>
-        <Td width="300">{comment.body}</Td>
+        <Td width="800">{comment.body}</Td>
         <Td>{comment.author}</Td>
         <Td>
             <CommentModifyControls id={comment.id} />

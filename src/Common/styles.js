@@ -6,14 +6,14 @@ export const Tr = styled.tr`
     }
 
     :nth-child(even) {
-        background: DodgerBlue;
+        background: cyan;
     }
 `
 
 export const Td = styled.td`
     width: ${props => (props.width ? props.width : '150px')};
     text-align: left;
-    padding-left: 5px;
+    padding: 10px 5px 10px 5px;
 `
 
 export const CommentDiv = styled.div`
