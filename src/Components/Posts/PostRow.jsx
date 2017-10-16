@@ -6,20 +6,19 @@ import PostVote from './PostVote'
 import PostModifyControls from './PostModifyControls'
 
 const PostRow = ({ id, timestamp, title, body, author, category }) => (
-    <li key={id}>
-        <Link to={`/${category}/${id}`}>{id}</Link>
-        <div>
-            timestamp -{' '}
-            {dateFormat(timestamp, 'dddd, mmmm dS, yyyy, h:MM:ss TT')}
-        </div>
-        <div>title - {title}</div>
-        <div>body - {body}</div>
-        <div>author - {author}</div>
-        <div>category - {category}</div>
-
-        <PostModifyControls id={id} category={category} />
-        <PostVote id={id} />
-    </li>
+    <tr key={id}>
+        <td>{dateFormat(timestamp, 'yyyy-mm-dd hh:MM:ss')}</td>
+        <td>{title}</td>
+        <td>{body}</td>
+        <td>{author}</td>
+        <td>{category}</td>
+        <td>
+            <PostModifyControls id={id} category={category} />
+        </td>
+        <td>
+            <PostVote id={id} />
+        </td>
+    </tr>
 )
 
 PostRow.propTypes = {

@@ -6,7 +6,7 @@ import uuid from 'uuid/v4'
 import PostForm from './PostForm'
 import { AddPost } from '../../Features/Posts/postActions'
 
-const CreatePost = ({ addPost, history, category }) => {
+const CreatePost = ({ addPost, history, category = 'react' }) => {
     const handleSubmit = values => {
         const newPost = {
             ...values,

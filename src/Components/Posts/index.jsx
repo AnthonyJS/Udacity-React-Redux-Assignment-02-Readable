@@ -56,11 +56,24 @@ class PostsList extends Component {
                         </li>
                     ))}
                 </ul>
-                <ul>
-                    {sortedPosts.map(post => (
-                        <PostRow key={post.id} {...post} />
-                    ))}
-                </ul>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Timestamp</th>
+                            <th>Title</th>
+                            <th>Body</th>
+                            <th>Author</th>
+                            <th>Category</th>
+                            <th>Modify</th>
+                            <th>Vote</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {sortedPosts.map(post => (
+                            <PostRow key={post.id} {...post} />
+                        ))}
+                    </tbody>
+                </table>
             </div>
         )
     }
