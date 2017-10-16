@@ -1,21 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
 import dateFormat from 'dateformat'
 import CommentVote from './CommentVote'
 import CommentModifyControls from './CommentModifyControls'
 import { DATE_FORMAT } from '../../Common/enums'
-
-const Tr = styled.tr`
-    :nth-child(odd) {
-        background: #eee;
-    }
-`
-
-const Td = styled.td`
-    width: ${props => (props.width ? props.width : '150px')};
-    text-align: left;
-`
+import { Tr, Td } from '../../Common/styles'
 
 const CommentRow = ({ comment }) => (
     <Tr key={comment.id}>

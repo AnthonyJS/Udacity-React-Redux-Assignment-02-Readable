@@ -3,10 +3,8 @@ import { connect } from 'react-redux'
 import { get, orderBy } from 'lodash'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import CategoryLoader from '../Categories/CategoryNav'
 import { GetPosts } from '../../Features/Posts/postActions'
 import PostsTable from './PostsTable'
-import { POST_TYPE } from '../../Common/enums'
 
 class Posts extends Component {
     componentDidMount() {
@@ -44,6 +42,8 @@ class Posts extends Component {
                         ? `${this.category} category`
                         : 'all categories'}
                 </h1>
+
+                <PostsTable posts={sortedPosts} />
                 <button>
                     {this.category ? (
                         <Link to={`/${this.category}/create`}>Add post</Link>
@@ -51,8 +51,6 @@ class Posts extends Component {
                         <Link to="/create">Add post</Link>
                     )}
                 </button>
-                <CategoryLoader />
-                <PostsTable posts={sortedPosts} />
             </div>
         )
     }

@@ -18,8 +18,9 @@ const CreatePost = ({ addPost, history, category = 'react' }) => {
     }
 
     return (
-        <div style={{ backgroundColor: '#eeeeee' }}>
-            Add post<PostForm
+        <div>
+            <h1>Add post</h1>
+            <PostForm
                 onSubmit={handleSubmit}
                 initialValues={{ category }}
                 enableReinitialize

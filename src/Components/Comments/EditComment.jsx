@@ -13,7 +13,8 @@ const EditComment = ({ initialValues, editComment, history }) => {
 
     return (
         <div>
-            Edit comment<CommentForm
+            <h1>Edit comment</h1>
+            <CommentForm
                 onSubmit={handleSubmit}
                 initialValues={initialValues}
                 enableReinitialize

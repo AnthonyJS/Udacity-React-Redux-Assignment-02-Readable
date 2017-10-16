@@ -25,41 +25,44 @@ class CommentsList extends Component {
         return (
             <div>
                 {sortedComments.length > 0 && (
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>
-                                    <a
-                                        role="button"
-                                        onClick={() =>
-                                            setCommentSortBy('timestamp')}
-                                    >
-                                        Timestamp
-                                    </a>
-                                </th>
-                                <th>Body</th>
-                                <th>Author</th>
-                                <th>Modify</th>
-                                <th>
-                                    <a
-                                        role="button"
-                                        onClick={() =>
-                                            setCommentSortBy('voteScore')}
-                                    >
-                                        Vote
-                                    </a>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {sortedComments.map(comment => (
-                                <CommentRow
-                                    key={comment.id}
-                                    comment={comment}
-                                />
-                            ))}
-                        </tbody>
-                    </table>
+                    <div>
+                        <h2>Comments</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <a
+                                            role="button"
+                                            onClick={() =>
+                                                setCommentSortBy('timestamp')}
+                                        >
+                                            Timestamp
+                                        </a>
+                                    </th>
+                                    <th>Body</th>
+                                    <th>Author</th>
+                                    <th>Modify</th>
+                                    <th>
+                                        <a
+                                            role="button"
+                                            onClick={() =>
+                                                setCommentSortBy('voteScore')}
+                                        >
+                                            Vote
+                                        </a>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {sortedComments.map(comment => (
+                                    <CommentRow
+                                        key={comment.id}
+                                        comment={comment}
+                                    />
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
                 )}
             </div>
         )

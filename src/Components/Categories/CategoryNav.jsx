@@ -8,7 +8,7 @@ const CategoryNav = ({ categories }) => (
     <div>
         <CategoryLoader />
         <div>
-            <span>Choose category: </span>
+            <span>Category nav / </span>
             <span>
                 <Link to="/">all</Link>
             </span>

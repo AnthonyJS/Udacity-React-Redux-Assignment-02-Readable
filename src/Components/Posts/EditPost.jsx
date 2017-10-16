@@ -13,7 +13,7 @@ const EditPost = ({ initialValues, updatePost, history }) => {
 
     return (
         <div>
-            Edit post
+            <h1>Edit post</h1>
             <PostForm
                 onSubmit={handleSubmit}
                 initialValues={initialValues}

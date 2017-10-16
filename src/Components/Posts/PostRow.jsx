@@ -2,21 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import dateFormat from 'dateformat'
-import styled from 'styled-components'
 import PostVote from './PostVote'
 import PostModifyControls from './PostModifyControls'
 import { DATE_FORMAT } from '../../Common/enums'
-
-const Tr = styled.tr`
-    :nth-child(odd) {
-        background: #eee;
-    }
-`
-
-const Td = styled.td`
-    width: ${props => (props.width ? props.width : '150px')};
-    text-align: left;
-`
+import { Tr, Td } from '../../Common/styles'
 
 const PostRow = ({ id, timestamp, title, body, author, category }) => (
     <Tr key={id}>

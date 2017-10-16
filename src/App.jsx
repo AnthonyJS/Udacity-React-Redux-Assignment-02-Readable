@@ -1,16 +1,15 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
-
 import PostsList from './Components/Posts'
 import PostDetail from './Components/Posts/PostDetail'
 import CreatePost from './Components/Posts/CreatePost'
 import EditPost from './Components/Posts/EditPost'
 import EditComment from './Components/Comments/EditComment'
-
-import './App.css'
+import CategoryNav from './Components/Categories/CategoryNav'
 
 const App = () => (
     <div className="App">
+        <CategoryNav />
         <Switch>
             <Route path="/" exact render={() => <PostsList />} />
             <Route path="/create" exact component={CreatePost} />
