@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Field, reduxForm } from 'redux-form'
-import CategorySelect from '../Shared/CategorySelect'
+import CategorySelect from '../Categories/CategorySelect'
 
 const PostForm = ({ handleSubmit }) => (
     <div>
