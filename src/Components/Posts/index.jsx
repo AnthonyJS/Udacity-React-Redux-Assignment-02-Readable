@@ -6,7 +6,6 @@ import PropTypes from 'prop-types'
 import CategoryLoader from '../Categories/CategoryNav'
 import { GetPosts } from '../../Features/Posts/postActions'
 import PostsTable from './PostsTable'
-import SetSortBy from '../Shared/SetSortBy'
 import { POST_TYPE } from '../../Common/enums'
 
 class Posts extends Component {
@@ -39,8 +38,12 @@ class Posts extends Component {
 
         return (
             <div>
-                <h1>Posts</h1>
-                <SetSortBy type={POST_TYPE} />
+                <h1>
+                    Posts for{' '}
+                    {this.category
+                        ? `${this.category} category`
+                        : 'all categories'}
+                </h1>
                 <button>
                     {this.category ? (
                         <Link to={`/${this.category}/create`}>Add post</Link>
