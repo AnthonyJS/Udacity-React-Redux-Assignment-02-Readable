@@ -5,14 +5,20 @@ import { withRouter } from 'react-router-dom'
 import ModifyControls from '../Shared/ModifyControls'
 import { DeletePost } from '../../Features/Posts/postActions'
 
-const PostModifyControls = ({ deletePost, category, id, history }) => {
+const PostModifyControls = ({
+    deletePost,
+    category,
+    id,
+    history,
+    redirectAfterDelete
+}) => {
     const handleEdit = () => {
         history.push(`/${category}/${id}/edit`)
     }
 
     const handleDelete = postId => {
         deletePost(postId)
-        history.goBack()
+        if (redirectAfterDelete) history.goBack()
     }
 
     return (
@@ -28,7 +34,8 @@ PostModifyControls.propTypes = {
     deletePost: PropTypes.func.isRequired,
     id: PropTypes.string.isRequired,
     category: PropTypes.string.isRequired,
-    history: PropTypes.object.isRequired
+    history: PropTypes.object.isRequired,
+    redirectAfterDelete: PropTypes.bool
 }
 
 const mapDispatchToProps = dispatch => ({

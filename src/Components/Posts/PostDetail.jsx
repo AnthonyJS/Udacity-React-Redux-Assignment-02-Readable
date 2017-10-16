@@ -38,7 +38,7 @@ const PostDetail = ({
                     <div>author - {author}</div>
                     <div>category - {category}</div>
 
-                    <PostModifyControls id={id} />
+                    <PostModifyControls id={id} redirectAfterDelete />
                     <PostVote id={id} />
                 </div>
             )}

@@ -83,7 +83,7 @@ PostsList.propTypes = {
     posts: PropTypes.array.isRequired,
     categories: PropTypes.array.isRequired,
     getPosts: PropTypes.func.isRequired,
-    match: PropTypes.object.isRequired,
+    match: PropTypes.object,
     sortBy: PropTypes.string.isRequired
 }
 
