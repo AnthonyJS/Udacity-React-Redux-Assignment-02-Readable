@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import PostForm from './PostForm'
 import { UpdatePost } from '../../Features/Posts/postActions'
+import { PostDiv } from '../../Common/styles'
 
 const EditPost = ({ initialValues, updatePost, history }) => {
     const handleSubmit = values => {
@@ -12,7 +13,7 @@ const EditPost = ({ initialValues, updatePost, history }) => {
     }
 
     return (
-        <div>
+        <PostDiv>
             <h1>Edit post</h1>
             <PostForm
                 onSubmit={handleSubmit}
@@ -20,7 +21,7 @@ const EditPost = ({ initialValues, updatePost, history }) => {
                 enableReinitialize
             />
             <button onClick={() => history.goBack()}>Cancel</button>
-        </div>
+        </PostDiv>
     )
 }
 

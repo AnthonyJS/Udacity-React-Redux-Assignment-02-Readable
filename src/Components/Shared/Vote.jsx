@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 
 const Vote = ({ voteScore, handleUpVote, handleDownVote }) => (
     <div>
-        <span>{voteScore}</span>
         <button onClick={handleUpVote}>+</button>
+        <span>{voteScore}</span>
         <button onClick={handleDownVote}>-</button>
     </div>
 )

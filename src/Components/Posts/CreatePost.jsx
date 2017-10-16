@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom'
 import uuid from 'uuid/v4'
 import PostForm from './PostForm'
 import { AddPost } from '../../Features/Posts/postActions'
+import { PostDiv } from '../../Common/styles'
 
 const CreatePost = ({ addPost, history, category = 'react' }) => {
     const handleSubmit = values => {
@@ -18,7 +19,7 @@ const CreatePost = ({ addPost, history, category = 'react' }) => {
     }
 
     return (
-        <div>
+        <PostDiv>
             <h1>Add post</h1>
             <PostForm
                 onSubmit={handleSubmit}
@@ -26,7 +27,7 @@ const CreatePost = ({ addPost, history, category = 'react' }) => {
                 enableReinitialize
             />
             <button onClick={() => history.goBack()}>Cancel</button>
-        </div>
+        </PostDiv>
     )
 }
 

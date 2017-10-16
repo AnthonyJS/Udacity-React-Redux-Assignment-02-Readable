@@ -1,0 +1,39 @@
+textarea {
+    width: 1000px;
+    height: 300px;
+}
+
+div {
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 50pt;
+}
+
+button {
+    margin: 10px 5px 10px 5px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: RebeccaPurple;
+    color: white;
+}
+
+a {
+    color: white;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: tomato;
+}
+
+body {
+    background-color: teal;
+}
+
+th {
+    background-color: SlateBlue;
+    padding: 20px 20px 20px 5px;
+}

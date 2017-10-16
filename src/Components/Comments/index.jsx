@@ -2,12 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import CommentsList from './CommentsList'
 import CreateComment from './CreateComment'
+import { CommentDiv } from '../../Common/styles'
 
 const Comments = ({ postId }) => (
-    <div>
+    <CommentDiv>
         <CommentsList postId={postId} />
         <CreateComment postId={postId} />
-    </div>
+    </CommentDiv>
 )
 
 Comments.propTypes = {

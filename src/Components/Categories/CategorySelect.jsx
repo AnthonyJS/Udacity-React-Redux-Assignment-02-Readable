@@ -7,7 +7,7 @@ import CategoryLoader from './CategoryLoader'
 const CategorySelect = ({ categories }) => (
     <div>
         <CategoryLoader />
-        Category
+        Category<br />
         <Field name="category" component="select">
             {categories.map(cat => (
                 <option value={cat.name}>{cat.name}</option>

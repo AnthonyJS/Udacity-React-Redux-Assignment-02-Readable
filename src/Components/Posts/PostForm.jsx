@@ -7,20 +7,23 @@ const PostForm = ({ handleSubmit }) => (
     <div>
         <form onSubmit={handleSubmit}>
             <div>
-                Title
+                Title<br />
                 <Field name="title" component="input" type="text" />
             </div>
             <div>
-                Body <Field name="body" component="input" type="text" />
+                Body<br />
+                <Field name="body" component="textarea" />
             </div>
             <div>
-                Author <Field name="author" component="input" type="text" />
+                Author<br />
+                <Field name="author" component="input" type="text" />
             </div>
             <div>
                 <CategorySelect />
             </div>
-
-            <button type="submit">Submit</button>
+            <div>
+                <button type="submit">Submit</button>
+            </div>
         </form>
     </div>
 )

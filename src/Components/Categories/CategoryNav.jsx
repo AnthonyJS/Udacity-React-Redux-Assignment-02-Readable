@@ -2,10 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import styled from 'styled-components'
 import CategoryLoader from '../Categories/CategoryLoader'
 
+const NavDiv = styled.div`
+    font-size: 18pt;
+    padding: 10px;
+`
+
 const CategoryNav = ({ categories }) => (
-    <div>
+    <NavDiv>
         <CategoryLoader />
         <div>
             <span>Category nav / </span>
@@ -19,7 +25,7 @@ const CategoryNav = ({ categories }) => (
                 </span>
             ))}
         </div>
-    </div>
+    </NavDiv>
 )
 
 CategoryNav.propTypes = {

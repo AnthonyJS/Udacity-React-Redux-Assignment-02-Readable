@@ -6,6 +6,7 @@ import CreatePost from './Components/Posts/CreatePost'
 import EditPost from './Components/Posts/EditPost'
 import EditComment from './Components/Comments/EditComment'
 import CategoryNav from './Components/Categories/CategoryNav'
+import './App.css'
 
 const App = () => (
     <div className="App">

@@ -3,11 +3,19 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { get } from 'lodash'
 import dateFormat from 'dateformat'
+import styled from 'styled-components'
 import PostVote from './PostVote'
 import PostModifyControls from './PostModifyControls'
 import Comments from '../Comments'
 import { GetPostById } from '../../Features/Posts/postActions'
 import { DATE_FORMAT } from '../../Common/enums'
+import { PostDiv } from '../../Common/styles'
+
+const PostBodyDiv = styled.div`
+    background-color: PowderBlue;
+    font-size: 18pt;
+    padding: 20px;
+`
 
 const PostDetail = ({
     id,
@@ -26,20 +34,22 @@ const PostDetail = ({
     }
 
     return (
-        <div>
+        <PostDiv>
             {title && (
                 <div>
                     <h1>{title}</h1>
+                    <PostVote id={id} />
                     <h2>by {author}</h2>
                     <h3>posted on {dateFormat(timestamp, DATE_FORMAT)}</h3>
                     <h4>in the {category} category</h4>
-                    <div>{body}</div>
-                    <PostModifyControls id={id} redirectAfterDelete />
-                    <PostVote id={id} />
+                    <PostBodyDiv>{body}</PostBodyDiv>
+                    <div>
+                        <PostModifyControls id={id} redirectAfterDelete />
+                    </div>
                 </div>
             )}
             <Comments postId={id} />
-        </div>
+        </PostDiv>
     )
 }
 

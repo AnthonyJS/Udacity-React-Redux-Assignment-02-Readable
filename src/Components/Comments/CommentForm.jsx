@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 import { Field, reduxForm, reset } from 'redux-form'
 
 const afterSubmit = (result, dispatch) => dispatch(reset('comment'))
@@ -7,8 +8,14 @@ const afterSubmit = (result, dispatch) => dispatch(reset('comment'))
 const CommentForm = ({ handleSubmit }) => (
     <div>
         <form onSubmit={handleSubmit}>
-            Body<Field name="body" component="input" type="text" />
-            Author<Field name="author" component="input" type="text" />
+            <div>
+                Comment<br />
+                <Field name="body" component="textarea" />
+            </div>
+            <div>
+                by<br />
+                <Field name="author" component="input" type="text" />
+            </div>
             <button type="submit">Submit</button>
         </form>
     </div>

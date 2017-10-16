@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { GetPosts } from '../../Features/Posts/postActions'
 import PostsTable from './PostsTable'
+import { PostDiv } from '../../Common/styles'
 
 class Posts extends Component {
     componentDidMount() {
@@ -35,7 +36,7 @@ class Posts extends Component {
         const sortedPosts = orderBy(posts, [sortBy, 'timestamp'], ['desc'])
 
         return (
-            <div>
+            <PostDiv>
                 <h1>
                     Posts for{' '}
                     {this.category
@@ -51,7 +52,7 @@ class Posts extends Component {
                         <Link to="/create">Add post</Link>
                     )}
                 </button>
-            </div>
+            </PostDiv>
         )
     }
 }
