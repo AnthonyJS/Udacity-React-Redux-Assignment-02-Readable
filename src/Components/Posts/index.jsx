@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import { get, orderBy } from 'lodash'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import CategoryLoader from '../Categories/CategoryNav'
 import { GetPosts } from '../../Features/Posts/postActions'
 import PostRow from './PostRow'
-import CategoryLoader from '../Categories/CategoryLoader'
 import SetSortBy from '../Shared/SetSortBy'
 import { POST_TYPE } from '../../Common/enums'
 
@@ -31,7 +31,7 @@ class PostsList extends Component {
     }
 
     render() {
-        const { posts, categories, match, sortBy } = this.props
+        const { posts, match, sortBy } = this.props
 
         this.category = get(match, 'params.category')
 
@@ -40,7 +40,6 @@ class PostsList extends Component {
         return (
             <div>
                 <SetSortBy type={POST_TYPE} />
-                <CategoryLoader />
                 <button>
                     {this.category ? (
                         <Link to={`/${this.category}/create`}>Add post</Link>
@@ -48,14 +47,7 @@ class PostsList extends Component {
                         <Link to="/create">Add post</Link>
                     )}
                 </button>
-                <Link to="/">Link to all</Link>
-                <ul>
-                    {categories.map(cat => (
-                        <li key={cat.name}>
-                            <Link to={`/${cat.name}`}>{cat.name}</Link>
-                        </li>
-                    ))}
-                </ul>
+                <CategoryLoader />
                 <table>
                     <thead>
                         <tr>
@@ -81,15 +73,13 @@ class PostsList extends Component {
 
 PostsList.propTypes = {
     posts: PropTypes.array.isRequired,
-    categories: PropTypes.array.isRequired,
     getPosts: PropTypes.func.isRequired,
     match: PropTypes.object,
     sortBy: PropTypes.string.isRequired
 }
 
-const mapStateToProps = ({ posts, category, display }) => ({
+const mapStateToProps = ({ posts, display }) => ({
     posts: Object.values(posts),
-    categories: category.categories,
     sortBy: display.postSortBy
 })
 
