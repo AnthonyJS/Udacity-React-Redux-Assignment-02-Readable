@@ -1,10 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
+
+const VoteScore = styled.span`
+    font-size: 20pt;
+    font-weight: bold;
+`
 
 const Vote = ({ voteScore, handleUpVote, handleDownVote }) => (
     <div>
         <button onClick={handleUpVote}>+</button>
-        <span>{voteScore}</span>
+        <VoteScore>{voteScore}</VoteScore>
         <button onClick={handleDownVote}>-</button>
     </div>
 )

@@ -1,6 +1,7 @@
 textarea {
     width: 1000px;
     height: 300px;
+    padding: 10px;
 }
 
 div {
@@ -14,14 +15,23 @@ h1 {
 button {
     margin: 10px 5px 10px 5px;
     padding: 10px;
-    border: none;
+    border: solid;
+    border-color: hotpink;
     border-radius: 10px;
-    background-color: RebeccaPurple;
-    color: white;
+    background-color: plum;
+    color: black;
+}
+
+input {
+    padding: 10px;
+}
+
+select {
+    padding: 10px;
 }
 
 a {
-    color: white;
+    color: black;
     text-decoration: underline;
 }
 
@@ -34,6 +44,6 @@ body {
 }
 
 th {
-    background-color: SlateBlue;
+    background-color: sandybrown;
     padding: 20px 20px 20px 5px;
 }

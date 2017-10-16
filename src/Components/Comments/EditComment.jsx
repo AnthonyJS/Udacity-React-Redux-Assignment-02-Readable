@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 import CommentForm from './CommentForm'
 import { UpdateComment } from '../../Features/Comments/commentActions'
+import { CommentDiv } from '../../Common/styles'
 
 const EditComment = ({ initialValues, editComment, history }) => {
     const handleSubmit = values => {
@@ -12,7 +13,7 @@ const EditComment = ({ initialValues, editComment, history }) => {
     }
 
     return (
-        <div>
+        <CommentDiv>
             <h1>Edit comment</h1>
             <CommentForm
                 onSubmit={handleSubmit}
@@ -20,7 +21,7 @@ const EditComment = ({ initialValues, editComment, history }) => {
                 enableReinitialize
             />
             <button onClick={() => history.goBack()}>Cancel</button>
-        </div>
+        </CommentDiv>
     )
 }
 
