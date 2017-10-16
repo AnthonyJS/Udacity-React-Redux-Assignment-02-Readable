@@ -15,7 +15,11 @@ class CommentsList extends Component {
     render() {
         const { comments, sortBy } = this.props
 
-        const sortedComments = orderBy(comments, [sortBy], ['desc'])
+        const sortedComments = orderBy(
+            comments,
+            [sortBy, 'timestamp'],
+            ['desc']
+        )
 
         return (
             <div>

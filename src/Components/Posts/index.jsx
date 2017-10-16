@@ -35,7 +35,7 @@ class PostsList extends Component {
 
         this.category = get(match, 'params.category')
 
-        const sortedPosts = orderBy(posts, [sortBy], ['desc'])
+        const sortedPosts = orderBy(posts, [sortBy, 'timestamp'], ['desc'])
 
         return (
             <div>
