@@ -7,13 +7,19 @@ import PostVote from './PostVote'
 import PostModifyControls from './PostModifyControls'
 import { DATE_FORMAT } from '../../Common/enums'
 
+const Tr = styled.tr`
+    :nth-child(odd) {
+        background: #eee;
+    }
+`
+
 const Td = styled.td`
     width: ${props => (props.width ? props.width : '150px')};
     text-align: left;
 `
 
 const PostRow = ({ id, timestamp, title, body, author, category }) => (
-    <tr key={id}>
+    <Tr key={id}>
         <Td>{dateFormat(timestamp, DATE_FORMAT)}</Td>
         <Td width="300">
             <Link to={`/posts/${id}`}>{title}</Link>
@@ -27,7 +33,7 @@ const PostRow = ({ id, timestamp, title, body, author, category }) => (
         <Td>
             <PostVote id={id} />
         </Td>
-    </tr>
+    </Tr>
 )
 
 PostRow.propTypes = {
