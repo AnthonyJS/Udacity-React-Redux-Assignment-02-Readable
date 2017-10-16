@@ -5,7 +5,6 @@ import CommentVote from './CommentVote'
 import CommentModifyControls from './CommentModifyControls'
 import { DATE_FORMAT } from '../../Common/enums'
 import { Tr, Td } from '../../Common/styles'
-import { TrimLongString } from '../../Common/textHelpers'
 
 const CommentRow = ({ comment }) => (
     <Tr key={comment.id}>

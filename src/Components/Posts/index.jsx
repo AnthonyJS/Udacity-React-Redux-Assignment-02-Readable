@@ -45,13 +45,16 @@ class Posts extends Component {
                 </h1>
 
                 <PostsTable posts={sortedPosts} />
-                <button>
-                    {this.category ? (
-                        <Link to={`/${this.category}/create`}>Add post</Link>
-                    ) : (
-                        <Link to="/create">Add post</Link>
-                    )}
-                </button>
+
+                {this.category ? (
+                    <Link to={`/${this.category}/create`}>
+                        <button>Add post</button>
+                    </Link>
+                ) : (
+                    <Link to="/create">
+                        <button>Add post</button>
+                    </Link>
+                )}
             </PostDiv>
         )
     }

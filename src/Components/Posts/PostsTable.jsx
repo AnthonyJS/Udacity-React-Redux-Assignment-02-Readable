@@ -5,28 +5,40 @@ import PostRow from './PostRow'
 import { UpdatePostSortBy } from '../../Features/Display/displayActions'
 
 const PostsTable = ({ posts, setPostSortBy }) => (
-    <table>
-        <thead>
-            <tr>
-                <th>
-                    <a role="button" onClick={() => setPostSortBy('timestamp')}>
-                        Timestamp
-                    </a>
-                </th>
-                <th>Title</th>
-                <th>Body</th>
-                <th>Author</th>
-                <th>Category</th>
-                <th>Modify</th>
-                <th>
-                    <a role="button" onClick={() => setPostSortBy('voteScore')}>
-                        Vote
-                    </a>
-                </th>
-            </tr>
-        </thead>
-        <tbody>{posts.map(post => <PostRow key={post.id} {...post} />)}</tbody>
-    </table>
+    <div>
+        {posts.length > 0 && (
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            <a
+                                role="button"
+                                onClick={() => setPostSortBy('timestamp')}
+                            >
+                                Timestamp
+                            </a>
+                        </th>
+                        <th>Title</th>
+                        <th>Body</th>
+                        <th>Author</th>
+                        <th>Category</th>
+                        <th>Modify</th>
+                        <th>
+                            <a
+                                role="button"
+                                onClick={() => setPostSortBy('voteScore')}
+                            >
+                                Vote
+                            </a>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {posts.map(post => <PostRow key={post.id} {...post} />)}
+                </tbody>
+            </table>
+        )}
+    </div>
 )
 
 PostsTable.propTypes = {
