@@ -7,6 +7,7 @@ import { GetPosts } from '../../Features/Posts/postActions'
 import PostRow from './PostRow'
 import CategoryLoader from '../Shared/CategoryLoader'
 import SetSortBy from '../Shared/SetSortBy'
+import { POST_TYPE } from '../../Common/enums'
 
 class PostsList extends Component {
     componentDidMount() {
@@ -38,7 +39,7 @@ class PostsList extends Component {
 
         return (
             <div>
-                <SetSortBy type="Posts" />
+                <SetSortBy type={POST_TYPE} />
                 <CategoryLoader />
                 <button>
                     {this.category ? (

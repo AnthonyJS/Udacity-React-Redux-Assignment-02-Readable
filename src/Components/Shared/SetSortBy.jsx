@@ -6,11 +6,14 @@ import {
     UpdateCommentSortBy
 } from '../../Features/Display/displayActions'
 
+import { POST_TYPE, COMMENT_TYPE } from '../../Common/enums'
+
 const SetSortBy = ({ setPostSortBy, setCommentSortBy, type }) => {
     const doSortBy = value => {
-        if (type === 'Posts') return setPostSortBy(value)
+        if (type === POST_TYPE) return setPostSortBy(value)
+        if (type === COMMENT_TYPE) return setCommentSortBy(value)
 
-        return setCommentSortBy(value)
+        return 'voteScore'
     }
 
     return (
