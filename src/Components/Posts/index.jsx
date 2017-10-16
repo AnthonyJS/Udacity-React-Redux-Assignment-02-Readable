@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { get } from 'lodash'
+import { get, orderBy } from 'lodash'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { GetPosts } from '../../Features/Posts/postActions'
 import PostRow from './PostRow'
 import CategoryLoader from '../Shared/CategoryLoader'
+import SetSortBy from '../Shared/SetSortBy'
 
 class PostsList extends Component {
     componentDidMount() {
@@ -29,18 +30,24 @@ class PostsList extends Component {
     }
 
     render() {
-        const { posts, categories, match } = this.props
+        const { posts, categories, match, sortBy } = this.props
 
         this.category = get(match, 'params.category')
 
+        console.log('sortBy', sortBy)
+        const sortedPosts = orderBy(posts, [sortBy], ['desc'])
+
         return (
             <div>
+                <SetSortBy />
                 <CategoryLoader />
-                {this.category ? (
-                    <Link to={`/${this.category}/create`}>Add post</Link>
-                ) : (
-                    <Link to="/create">Add post</Link>
-                )}
+                <button>
+                    {this.category ? (
+                        <Link to={`/${this.category}/create`}>Add post</Link>
+                    ) : (
+                        <Link to="/create">Add post</Link>
+                    )}
+                </button>
                 <Link to="/">Link to all</Link>
                 <ul>
                     {categories.map(cat => (
@@ -50,7 +57,9 @@ class PostsList extends Component {
                     ))}
                 </ul>
                 <ul>
-                    {posts.map(post => <PostRow key={post.id} {...post} />)}
+                    {sortedPosts.map(post => (
+                        <PostRow key={post.id} {...post} />
+                    ))}
                 </ul>
             </div>
         )
@@ -61,12 +70,14 @@ PostsList.propTypes = {
     posts: PropTypes.array.isRequired,
     categories: PropTypes.array.isRequired,
     getPosts: PropTypes.func.isRequired,
-    match: PropTypes.object.isRequired
+    match: PropTypes.object.isRequired,
+    sortBy: PropTypes.string.isRequired
 }
 
-const mapStateToProps = ({ posts, category }) => ({
+const mapStateToProps = ({ posts, category, display }) => ({
     posts: Object.values(posts),
-    categories: category.categories
+    categories: category.categories,
+    sortBy: display.sortBy
 })
 
 const mapDispatchToProps = dispatch => ({

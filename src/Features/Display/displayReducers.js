@@ -1,16 +1,11 @@
-import { SHOW_CREATE_POST, HIDE_CREATE_POST } from './displayActions'
+import { SET_SORT_BY } from './displayActions'
 
-export default function Reducer(state = {}, action) {
+export default function Reducer(state = { sortBy: 'voteScore' }, action) {
     switch (action.type) {
-        case SHOW_CREATE_POST:
+        case SET_SORT_BY:
             return {
                 ...state,
-                showCreatePost: true
-            }
-        case HIDE_CREATE_POST:
-            return {
-                ...state,
-                showCreatePost: false
+                sortBy: action.payload
             }
         default:
             return state

@@ -1,14 +1,7 @@
-export const SHOW_CREATE_POST = 'SHOW_CREATE_POST'
-export const HIDE_CREATE_POST = 'HIDE_CREATE_POST'
+export const SET_SORT_BY = 'SET_SORT_BY'
 
-export const ShowCreatePost = dispatch =>
+export const UpdateSortBy = sortBy => dispatch =>
     dispatch({
-        type: SHOW_CREATE_POST,
-        payload: true
-    })
-
-export const HideCreatePost = dispatch =>
-    dispatch({
-        type: HIDE_CREATE_POST,
-        payload: true
+        type: SET_SORT_BY,
+        payload: sortBy
     })
