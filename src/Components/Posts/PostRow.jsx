@@ -2,25 +2,31 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import dateFormat from 'dateformat'
+import styled from 'styled-components'
 import PostVote from './PostVote'
 import PostModifyControls from './PostModifyControls'
 import { DATE_FORMAT } from '../../Common/enums'
 
+const Td = styled.td`
+    width: ${props => (props.width ? props.width : '150px')};
+    text-align: left;
+`
+
 const PostRow = ({ id, timestamp, title, body, author, category }) => (
     <tr key={id}>
-        <td>{dateFormat(timestamp, DATE_FORMAT)}</td>
-        <td>
+        <Td>{dateFormat(timestamp, DATE_FORMAT)}</Td>
+        <Td width="300">
             <Link to={`/posts/${id}`}>{title}</Link>
-        </td>
-        <td>{body}</td>
-        <td>{author}</td>
-        <td>{category}</td>
-        <td>
+        </Td>
+        <Td width="300">{body}</Td>
+        <Td>{author}</Td>
+        <Td>{category}</Td>
+        <Td>
             <PostModifyControls id={id} category={category} />
-        </td>
-        <td>
+        </Td>
+        <Td>
             <PostVote id={id} />
-        </td>
+        </Td>
     </tr>
 )
 
