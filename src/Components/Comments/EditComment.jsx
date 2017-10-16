@@ -8,6 +8,8 @@ import { CommentDiv } from '../../Common/styles'
 
 const EditComment = ({ initialValues, editComment, history }) => {
     const handleSubmit = values => {
+        if (!values.body) return
+
         editComment(values)
         history.goBack()
     }

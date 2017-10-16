@@ -8,6 +8,8 @@ import { PostDiv } from '../../Common/styles'
 
 const EditPost = ({ initialValues, updatePost, history }) => {
     const handleSubmit = values => {
+        if (!values.title) return
+
         updatePost(values)
         history.push(`/${values.category}/${values.id}`)
     }

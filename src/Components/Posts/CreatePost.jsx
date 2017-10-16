@@ -9,6 +9,8 @@ import { PostDiv } from '../../Common/styles'
 
 const CreatePost = ({ addPost, history, category = 'react' }) => {
     const handleSubmit = values => {
+        if (!values.title) return
+
         const newPost = {
             ...values,
             id: uuid()

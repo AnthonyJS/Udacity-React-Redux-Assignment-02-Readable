@@ -6,6 +6,8 @@ import { AddComment } from '../../Features/Comments/commentActions'
 
 const CreateComment = ({ addComment, postId }) => {
     const handleSubmit = values => {
+        if (!values.body) return
+
         const newComment = { ...values, postId }
 
         addComment(newComment)
