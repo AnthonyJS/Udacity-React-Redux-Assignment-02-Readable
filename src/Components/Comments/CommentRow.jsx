@@ -9,6 +9,8 @@ const CommentRow = ({ comment }) => (
         <br />
         Author:{comment.author}
         <br />
+        Timestamp:{comment.timestamp}
+        <br />
         <CommentVote id={comment.id} />
         <CommentModifyControls id={comment.id} />
     </li>

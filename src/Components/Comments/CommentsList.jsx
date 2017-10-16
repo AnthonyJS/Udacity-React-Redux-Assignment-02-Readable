@@ -13,9 +13,9 @@ class CommentsList extends Component {
     }
 
     render() {
-        const { comments } = this.props
+        const { comments, sortBy } = this.props
 
-        const sortedComments = orderBy(comments, ['voteScore'], ['desc'])
+        const sortedComments = orderBy(comments, [sortBy], ['desc'])
 
         return (
             <div>
@@ -32,13 +32,15 @@ class CommentsList extends Component {
 CommentsList.propTypes = {
     getCommentsByPostId: PropTypes.func.isRequired,
     postId: PropTypes.string.isRequired,
-    comments: PropTypes.array
+    comments: PropTypes.array,
+    sortBy: PropTypes.string.isRequired
 }
 
 const mapStateToProps = (state, ownProps) => ({
     comments: Object.values(state.comments).filter(
         comment => comment.parentId === ownProps.postId
-    )
+    ),
+    sortBy: state.display.commentSortBy
 })
 
 const mapDispatchToProps = dispatch => ({

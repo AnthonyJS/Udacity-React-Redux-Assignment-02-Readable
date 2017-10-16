@@ -1,18 +1,31 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { UpdateSortBy } from '../../Features/Display/displayActions'
+import {
+    UpdatePostSortBy,
+    UpdateCommentSortBy
+} from '../../Features/Display/displayActions'
 
-const SetSortBy = ({ setSortBy }) => (
-    <div>
-        Sort by: <br />
-        <button onClick={() => setSortBy('voteScore')}>Vote Count</button>
-        <button onClick={() => setSortBy('timestamp')}>Timestamp</button>
-    </div>
-)
+const SetSortBy = ({ setPostSortBy, setCommentSortBy, type }) => {
+    const doSortBy = value => {
+        if (type === 'Posts') return setPostSortBy(value)
+
+        return setCommentSortBy(value)
+    }
+
+    return (
+        <div>
+            Sort by: <br />
+            <button onClick={() => doSortBy('voteScore')}>Vote Count</button>
+            <button onClick={() => doSortBy('timestamp')}>Timestamp</button>
+        </div>
+    )
+}
 
 SetSortBy.propTypes = {
-    setSortBy: PropTypes.func.isRequired
+    setPostSortBy: PropTypes.func.isRequired,
+    setCommentSortBy: PropTypes.func.isRequired,
+    type: PropTypes.string.isRequired
 }
 
 const mapStateToProps = state => ({
@@ -20,7 +33,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    setSortBy: sortBy => dispatch(UpdateSortBy(sortBy))
+    setPostSortBy: sortBy => dispatch(UpdatePostSortBy(sortBy)),
+    setCommentSortBy: sortBy => dispatch(UpdateCommentSortBy(sortBy))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SetSortBy)

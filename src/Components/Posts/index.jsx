@@ -34,12 +34,11 @@ class PostsList extends Component {
 
         this.category = get(match, 'params.category')
 
-        console.log('sortBy', sortBy)
         const sortedPosts = orderBy(posts, [sortBy], ['desc'])
 
         return (
             <div>
-                <SetSortBy />
+                <SetSortBy type="Posts" />
                 <CategoryLoader />
                 <button>
                     {this.category ? (
@@ -77,7 +76,7 @@ PostsList.propTypes = {
 const mapStateToProps = ({ posts, category, display }) => ({
     posts: Object.values(posts),
     categories: category.categories,
-    sortBy: display.sortBy
+    sortBy: display.postSortBy
 })
 
 const mapDispatchToProps = dispatch => ({
