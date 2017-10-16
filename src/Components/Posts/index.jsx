@@ -39,6 +39,7 @@ class Posts extends Component {
 
         return (
             <div>
+                <h1>Posts</h1>
                 <SetSortBy type={POST_TYPE} />
                 <button>
                     {this.category ? (

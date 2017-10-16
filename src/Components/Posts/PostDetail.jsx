@@ -23,11 +23,13 @@ const PostDetail = ({
     if (!title) {
         const idFromUrl = get(match, 'params.post_id')
         getPostById(idFromUrl)
-        return <div>Loading...</div>
+        return <div>Post not found</div>
     }
 
     return (
         <div>
+            <h1>{title}</h1>
+            <h2>by {author}</h2>
             <Link to={`/${category}`}>Link back to {category} category</Link>
             {title && (
                 <div>

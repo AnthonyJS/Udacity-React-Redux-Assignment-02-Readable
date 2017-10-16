@@ -7,14 +7,18 @@ import CategoryLoader from '../Categories/CategoryLoader'
 const CategoryNav = ({ categories }) => (
     <div>
         <CategoryLoader />
-        <Link to="/">Link to all</Link>
-        <ul>
+        <div>
+            <span>Choose category: </span>
+            <span>
+                <Link to="/">all</Link>
+            </span>
             {categories.map(cat => (
-                <li key={cat.name}>
-                    <Link to={`/${cat.name}`}>{cat.name}</Link>
-                </li>
+                <span key={cat.name}>
+                    {' '}
+                    - <Link to={`/${cat.name}`}>{cat.name}</Link>
+                </span>
             ))}
-        </ul>
+        </div>
     </div>
 )
 

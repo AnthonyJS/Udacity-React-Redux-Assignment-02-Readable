@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { orderBy } from 'lodash'
 import { GetCommentsByPostId } from '../../Features/Comments/commentActions'
 import CommentRow from './CommentRow'
+import { UpdateCommentSortBy } from '../../Features/Display/displayActions'
 
 class CommentsList extends Component {
     componentDidMount() {
@@ -13,7 +14,7 @@ class CommentsList extends Component {
     }
 
     render() {
-        const { comments, sortBy } = this.props
+        const { comments, sortBy, setCommentSortBy } = this.props
 
         const sortedComments = orderBy(
             comments,
@@ -23,11 +24,43 @@ class CommentsList extends Component {
 
         return (
             <div>
-                <ul>
-                    {sortedComments.map(comment => (
-                        <CommentRow key={comment.id} comment={comment} />
-                    ))}
-                </ul>
+                {sortedComments.length > 0 && (
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>
+                                    <a
+                                        role="button"
+                                        onClick={() =>
+                                            setCommentSortBy('timestamp')}
+                                    >
+                                        Timestamp
+                                    </a>
+                                </th>
+                                <th>Body</th>
+                                <th>Author</th>
+                                <th>Modify</th>
+                                <th>
+                                    <a
+                                        role="button"
+                                        onClick={() =>
+                                            setCommentSortBy('voteScore')}
+                                    >
+                                        Vote
+                                    </a>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {sortedComments.map(comment => (
+                                <CommentRow
+                                    key={comment.id}
+                                    comment={comment}
+                                />
+                            ))}
+                        </tbody>
+                    </table>
+                )}
             </div>
         )
     }
@@ -37,7 +70,8 @@ CommentsList.propTypes = {
     getCommentsByPostId: PropTypes.func.isRequired,
     postId: PropTypes.string.isRequired,
     comments: PropTypes.array,
-    sortBy: PropTypes.string.isRequired
+    sortBy: PropTypes.string.isRequired,
+    setCommentSortBy: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state, ownProps) => ({
@@ -48,7 +82,8 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    getCommentsByPostId: id => dispatch(GetCommentsByPostId(id))
+    getCommentsByPostId: id => dispatch(GetCommentsByPostId(id)),
+    setCommentSortBy: sortBy => dispatch(UpdateCommentSortBy(sortBy))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CommentsList)
