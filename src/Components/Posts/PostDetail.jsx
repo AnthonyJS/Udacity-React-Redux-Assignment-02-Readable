@@ -8,6 +8,7 @@ import PostVote from './PostVote'
 import PostModifyControls from './PostModifyControls'
 import Comments from '../Comments'
 import { GetPostById } from '../../Features/Posts/postActions'
+import { DATE_FORMAT } from '../../Common/enums'
 
 const PostDetail = ({
     id,
@@ -31,13 +32,7 @@ const PostDetail = ({
             {title && (
                 <div>
                     <div>id - {id}</div>
-                    <div>
-                        timestamp -{' '}
-                        {dateFormat(
-                            timestamp,
-                            'dddd, mmmm dS, yyyy, h:MM:ss TT'
-                        )}
-                    </div>
+                    <div>timestamp - {dateFormat(timestamp, DATE_FORMAT)}</div>
                     <div>title - {title}</div>
                     <div>body - {body}</div>
                     <div>author - {author}</div>

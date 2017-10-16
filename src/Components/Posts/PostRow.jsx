@@ -4,11 +4,14 @@ import { Link } from 'react-router-dom'
 import dateFormat from 'dateformat'
 import PostVote from './PostVote'
 import PostModifyControls from './PostModifyControls'
+import { DATE_FORMAT } from '../../Common/enums'
 
 const PostRow = ({ id, timestamp, title, body, author, category }) => (
     <tr key={id}>
-        <td>{dateFormat(timestamp, 'yyyy-mm-dd hh:MM:ss')}</td>
-        <td>{title}</td>
+        <td>{dateFormat(timestamp, DATE_FORMAT)}</td>
+        <td>
+            <Link to={`/posts/${id}`}>{title}</Link>
+        </td>
         <td>{body}</td>
         <td>{author}</td>
         <td>{category}</td>
