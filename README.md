@@ -7,11 +7,7 @@ Clone the repository:
 
   git clone https://github.com/udacity/reactnd-project-readable-starter
 
-Go to the api-server folder
-
-  cd reactnd-project-readable-starter/api-server
-
-Use Yarn to get the relevant Node packages
+Go to the folder containing the package.json file, and use Yarn to get the relevant Node packages
 
   yarn
 

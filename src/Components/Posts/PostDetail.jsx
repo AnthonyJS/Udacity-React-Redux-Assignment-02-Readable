@@ -7,7 +7,7 @@ import styled from 'styled-components'
 import PostVote from './PostVote'
 import PostModifyControls from './PostModifyControls'
 import Comments from '../Comments'
-import { GetPostById } from '../../Features/Posts/postActions'
+import * as actions from '../../Features/Posts/postActions'
 import { DATE_FORMAT } from '../../Common/enums'
 import { PostDiv } from '../../Common/styles'
 
@@ -25,11 +25,11 @@ const PostDetail = ({
     author,
     category,
     match,
-    getPostById
+    GetPostById
 }) => {
     if (!title) {
         const idFromUrl = get(match, 'params.post_id')
-        getPostById(idFromUrl)
+        GetPostById(idFromUrl)
         return <div>Post not found</div>
     }
 
@@ -60,7 +60,7 @@ PostDetail.propTypes = {
     body: PropTypes.string,
     author: PropTypes.string,
     category: PropTypes.string,
-    getPostById: PropTypes.func.isRequired,
+    GetPostById: PropTypes.func.isRequired,
     match: PropTypes.object
 }
 
@@ -68,8 +68,4 @@ const mapStateToProps = ({ posts }, ownProps) => ({
     ...posts[ownProps.match.params.post_id]
 })
 
-const mapDispatchToProps = dispatch => ({
-    getPostById: id => dispatch(GetPostById(id))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(PostDetail)
+export default connect(mapStateToProps, actions)(PostDetail)

@@ -8,13 +8,13 @@ import { UpdateCommentSortBy } from '../../Features/Display/displayActions'
 
 class CommentsList extends Component {
     componentDidMount() {
-        const { getCommentsByPostId, postId } = this.props
+        const { postId } = this.props
 
-        getCommentsByPostId(postId)
+        this.props.GetCommentsByPostId(postId)
     }
 
     render() {
-        const { comments, sortBy, setCommentSortBy } = this.props
+        const { comments, sortBy } = this.props
 
         const sortedComments = orderBy(
             comments,
@@ -34,7 +34,9 @@ class CommentsList extends Component {
                                         <a
                                             role="button"
                                             onClick={() =>
-                                                setCommentSortBy('timestamp')}
+                                                this.props.UpdateCommentSortBy(
+                                                    'timestamp'
+                                                )}
                                         >
                                             Timestamp
                                         </a>
@@ -46,7 +48,9 @@ class CommentsList extends Component {
                                         <a
                                             role="button"
                                             onClick={() =>
-                                                setCommentSortBy('voteScore')}
+                                                this.props.UpdateCommentSortBy(
+                                                    'voteScore'
+                                                )}
                                         >
                                             Vote
                                         </a>
@@ -70,11 +74,11 @@ class CommentsList extends Component {
 }
 
 CommentsList.propTypes = {
-    getCommentsByPostId: PropTypes.func.isRequired,
+    GetCommentsByPostId: PropTypes.func.isRequired,
     postId: PropTypes.string.isRequired,
     comments: PropTypes.array,
     sortBy: PropTypes.string.isRequired,
-    setCommentSortBy: PropTypes.func.isRequired
+    UpdateCommentSortBy: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state, ownProps) => ({
@@ -84,9 +88,7 @@ const mapStateToProps = (state, ownProps) => ({
     sortBy: state.display.commentSortBy
 })
 
-const mapDispatchToProps = dispatch => ({
-    getCommentsByPostId: id => dispatch(GetCommentsByPostId(id)),
-    setCommentSortBy: sortBy => dispatch(UpdateCommentSortBy(sortBy))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(CommentsList)
+export default connect(mapStateToProps, {
+    GetCommentsByPostId,
+    UpdateCommentSortBy
+})(CommentsList)
